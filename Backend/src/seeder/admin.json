@@ -51,12 +51,12 @@
       {
         "first_name": "Mster Yi",
         "last_name": "Grand Mater",
-        "email": "MASTER_TEST1@gmail.com",
+        "email": "mamduh2542@gmail.com",
         "password_hash": "$argon2id$v=19$m=65536,t=5,p=1$WnopqwB5J891T521I5jbpw$XEk4kYd6X8gAQxfUB6oXW5Db61yhwCqVpT1rXwK1KWk",
         "refresh_token": "c676020e48e1866182cf29b6bf29a3eeef12ff8619c6f9dc0183b4a7a12fc43bd7234b43156f1e89e46ab74d01f50ecd1a94a6f2def47fae6828a1f2ceb49a68",
         "status": 102,
-        "email_verification": 1,
-        "is_2fa_active":1
+        "email_verification": 0,
+        "is_2fa_active":0
       }
     ]
   }

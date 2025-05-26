@@ -72,9 +72,6 @@ const loginValidate = () => async (ctx, next) => {
     const findUser = await knex(ADMINS).select('*')
       .where({ email: Email })
 
-    ctx.password_hash = findUser[0].password_hash
-    ctx.refresh_token = findUser[0].refresh_token
-    
     if (!findUser[0]) {
 
       ctx.status = 404;
@@ -84,6 +81,9 @@ const loginValidate = () => async (ctx, next) => {
       return;
     }
 
+    ctx.password_hash = findUser[0].password_hash
+    ctx.refresh_token = findUser[0].refresh_token
+    
     const isYourAccountHaveBeenBlocked = await isBlocked(ctx, findUser[0].email);
 
     if (isYourAccountHaveBeenBlocked) {

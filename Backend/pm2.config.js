@@ -6,7 +6,7 @@ module.exports = {
       args: 'start',
       instances: 'max',
       watch: true,
-      ignore_watch: ['package-lock.json', 'node_modules', 'logs', '.DS_Store', 'newrelic_agent.log'],
+      ignore_watch: ['package-lock.json', 'node_modules', 'logs', '.DS_Store'],
       max_restarts: 3,
       env: {
         NODE_ENV: 'production'
