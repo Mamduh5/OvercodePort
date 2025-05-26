@@ -1,8 +1,8 @@
-## OvercodePor
+# OvercodePort
 A full-stack project using next and node showcasing my skills.
 
 ## Database is auto schema
-# Table will create automatically when run
+### Table will create automatically when run
 
 ## Project Setup 
 
