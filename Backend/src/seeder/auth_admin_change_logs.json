@@ -1,0 +1,79 @@
+[
+    {
+        "table": "auth_admin_change_logs",
+        "schema": {
+            "auth_admin_change_logs_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id_in_action": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": true
+            },
+            "target_admin_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": false
+            },
+            "timestamp": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            },
+            "action_type": {
+                "type": "integer",
+                "comment": "1 = CREATE, 2 = UPDATE, 3 = DELETE, 4 = PASSWROD_CHANGE",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'CREATE' WHEN ${column2} = 2 THEN 'UPDATE' WHEN ${column2} = 3 THEN 'DELETE' WHEN ${column2} = 4 THEN 'PASSWROD_CHANGE' ELSE 'UNKNOWN' END AS is_active",
+                "notNullable": true
+            },
+            "old_data_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admin_data_tracking",
+                    "column": "admin_data_tracking_id"
+                },
+                "notNullable": false
+            },
+            "new_data_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admin_data_tracking",
+                    "column": "admin_data_tracking_id"
+                },
+                "notNullable": false
+            },
+            "performing_action_using_role_model_id": {
+                "type": "integer",
+                "notNullable": false
+            },
+            "delail_why_is_it_need_to_be_delete": {
+                "type": "string",
+                "length": 150,
+                "comment": "use only when delete action",
+                "notNullable": false
+            },
+            "name_of_approver": {
+                "type": "string",
+                "length": 50,
+                "comment": "use only when delete action",
+                "notNullable": false
+            },
+            "ip_address": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "user_agent": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            }
+        }
+    }
+]

@@ -1,0 +1,69 @@
+{
+  "server": {
+    "host": "localhost",
+    "port": 7001
+  },
+  "bodyParser": {
+    "multipart": true,
+    "jsonLimit": "2mb",
+    "formLimit": "2mb"
+  },
+  "rateLimit": {
+    "driver": "memory",
+    "duration": 60000,
+    "maxIps": 150
+  },
+  "basicAuth": {
+    "username": "bAsE3_SeTuP",
+    "password": "bAsE3_SeTuP@2025"
+  },
+  "jwt": {
+    "hash": "qfZus2!Zj2XIHbrjGj+WNhd9L@+vlocalhost_base3_setup@2023",
+    "options": {
+      "expiresIn": "1y"
+    },
+    "optionsMobile": {
+      "expiresIn": "15m"
+    }
+  },
+  "email": {
+    "token": "",
+    "endpoint": "https://send.api.mailtrap.io/",
+    "sender_email": "mailtrap@diagnosisthailand.com"
+  },
+  "tokenLogin": {
+    "hash": "",
+    "url": "",
+    "basicUser": "",
+    "basicPass": ""
+  },
+  "redis": {
+    "url": "",
+    "host": "210.246.202.16",
+    "port": 6380,
+    "password": "CYm8kz22KmAmwE"
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": "27017",
+    "username": "",
+    "password": "",
+    "database": "Saving-Gold",
+    "queryConnect": ""
+  },
+  "google": {
+    "projectId": "",
+    "keyFilename": "",
+    "storage": {
+      "host": "",
+      "bucket": "",
+      "path_image": "",
+      "path_document": "",
+      "location": "",
+      "regional": true
+    }
+  },
+  "_filterFile": {
+    "image_type": ["jpg", "JPG", "jpeg", "JPEG", "gif", "png", "webp", "pdf"]
+  }
+}

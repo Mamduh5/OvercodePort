@@ -1,0 +1,61 @@
+[
+    {
+        "table": "admin_2fa_request",
+        "schema": {
+            "admin_2fa_request_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": true
+            },
+            "verify_otp_failed_attempt_count": {
+                "type": "integer",
+                "notNullable": true
+            },
+            "topic_of_request": {
+                "type": "integer",
+                "notNullable": true,
+                "comment": "1 = EMAIL , 2 = SMS_MOBILE, 3 = VERIFY_EMAIL",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'EMAIL' WHEN ${column2} = 2 THEN 'SMS_MOBILE' WHEN ${column2} = 3 THEN 'VERIFY_EMAIL' ELSE 'UNKNOWN' END AS topic_of_request "
+            },
+            "otp_code": {
+                "type": "string",
+                "length": 8,
+                "notNullable": true
+            },
+            "otp_ref": {
+                "type": "string",
+                "length": 8,
+                "notNullable": true
+            },
+            "attempt_count": {
+                "type": "integer",
+                "comment": "Track failed attempts",
+                "notNullable": true
+            },
+            "otp_code_status": {
+                "type": "integer",
+                "comment": "1 = PENDING, 2 = VERIFIED, 3 = EXPIRED, 4 = INCORRECT",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'PENDING' WHEN ${column2} = 2 THEN 'VERIFIED' WHEN ${column2} = 3 THEN 'EXPIRED' WHEN ${column2} = 4 THEN 'INCORRECT' ELSE 'UNKNOWN' END AS is_active",
+                "notNullable": true
+            },
+            "request_coming_from": {
+                "type": "integer",
+                "notNullable": true,
+                "comment": "1 = CENTER , 2 = MERCHANT",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'CENTER' WHEN ${column2} = 2 THEN 'MERCHANT' ELSE 'UNKNOWN' END AS topic_of_request "
+            },
+            "expired_at": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            }
+        },
+        "data": []
+    }
+]

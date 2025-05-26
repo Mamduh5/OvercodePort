@@ -1,0 +1,17 @@
+{
+    "status": {
+        "type": "integer",
+        "notNullable": true,
+        "comment": "102 = ACTIVE,  402 = INACTIVE",
+        "querystring": "CASE WHEN ${column1} = 102 THEN 'ACTIVE' WHEN ${column2} = 402 THEN 'INACTIVE' ELSE 'UNKNOWN' END",
+        "updatestring":"CASE WHEN ? = 'ACTIVE' THEN 102 WHEN ? = 'INACTIVE' THEN 402 ELSE status END"
+    },
+    "created_at": {
+        "type": "timestamp",
+        "defaultTo": "now"
+      },
+      "updated_at": {
+        "type": "timestamp",
+        "defaultTo": "now"
+      }
+}

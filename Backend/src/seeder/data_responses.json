@@ -1,0 +1,692 @@
+{
+    "group": "DATA",
+    "responses": [
+        {
+            "name": "REQUEST_REFUND_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ร้องขอ refund สำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Request Refund Success."
+                }
+            ]
+        },
+        {
+            "name": "VOID_REQUEST_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ร้องขอ Void สำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Request Void Success."
+                }
+            ]
+        },
+        {
+            "name": "GET_DATA_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ดึงข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Get data successfully."
+                }
+            ]
+        },
+        {
+            "name": "POST_DATA_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "สร้างข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Created successfully."
+                }
+            ]
+        },
+        {
+            "name": "UPDATE_DATA_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "อัพเดทข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Updated successfully."
+                }
+            ]
+        },
+        {
+            "name": "DELETE_DATA_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ลบข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Deleted successfully."
+                }
+            ]
+        },
+        {
+            "name": "UPLOAD_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "อัพโหลดข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Uploaded successfully."
+                }
+            ]
+        },
+        {
+            "name": "PATCH_DATA_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "แก้ไขข้อมูลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "patch data successfully."
+                }
+            ]
+        },
+        {
+            "name": "LOGOUT_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ออกจากระบบสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "logout successfully."
+                }
+            ]
+        },
+        {
+            "name": "EXTEND_COOKIE_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ต่ออายุ cookie สำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "extend cookie successfully."
+                }
+            ]
+        },
+        {
+            "name": "GET_DATA_NOT_FOUND",
+            "code": "1001",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ไม่พบข้อมูล"
+                },
+                {
+                    "language": "EN",
+                    "description": "Data not found."
+                }
+            ]
+        },
+        {
+            "name": "POST_DATA_FAILED",
+            "code": "1002",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "สร้างข้อมูลล้มเหลว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Failed to create."
+                }
+            ]
+        },
+        {
+            "name": "UPDATE_DATA_FAILED",
+            "code": "1003",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "แก้ไขข้อมูลล้มเหลว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Failed to update."
+                }
+            ]
+        },
+        {
+            "name": "DELETE_DATA_FAILED",
+            "code": "1004",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ลบข้อมูลล้มเหลว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Failed to delete."
+                }
+            ]
+        },
+        {
+            "name": "UPLOAD_FAILED",
+            "code": "1005",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "อัพโหลดข้อมูลล้มเหลว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Failed to upload."
+                }
+            ]
+        },
+        {
+            "name": "UPDATE_NOT_ALLOW",
+            "code": "1006",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ไม่อนุญาตให้อัพเดท"
+                },
+                {
+                    "language": "EN",
+                    "description": "Update not allow."
+                }
+            ]
+        },
+        {
+            "name": "DATA_IS_ALREADY_EXISTS",
+            "code": "1007",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "มีข้อมูลนี้ในระบบแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Data already exists."
+                }
+            ]
+        },
+        {
+            "name": "DATA_IS_VERIFYING",
+            "code": "1008",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "กำลังตรวจสอบข้อมูล"
+                },
+                {
+                    "language": "EN",
+                    "description": "Verifying Data."
+                }
+            ]
+        },
+        {
+            "name": "SEND_MAIL_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ส่ง OTP อีเมลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Email sent success."
+                }
+            ]
+        },
+        {
+            "name": "CONFIRM_MAIL_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ยืนยัน OTP อีเมลสำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Confirm OTP Email success."
+                }
+            ]
+        },
+        {
+            "name": "SEND_SMS_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ส่ง SMS เบอร์โทรศัพท์สำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "SMS sent success."
+                }
+            ]
+        },
+        {
+            "name": "CONFIRM_SMS_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ยืนยัน SMS เบอร์โทรศัพท์สำเร็จ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Confirm SMS success."
+                }
+            ]
+        },
+        {
+            "name": "KYC_VERIFY_SUCCESS",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ยืนคำร้อง KYC เรียบร้อยแล้ว ได้โปรดรอ"
+                },
+                {
+                    "language": "EN",
+                    "description": "request KYC success plese confirm waiting."
+                }
+            ]
+        },
+        {
+            "name": "DATA_IS_NOT_EXISTS",
+            "code": "1009",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "รหัสผ่านปัจจุบันไม่ถูกต้อง"
+                },
+                {
+                    "language": "EN",
+                    "description": "ํYour current password is incorrect."
+                }
+            ]
+        },
+        {
+            "name": "DATA_IS_ALREADY_EXISTS",
+            "code": "1010",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ไม่สามารถทำรายการได้ เนื่องจากมีข้อมูลนี้ในระบบแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Cannot complete the process, because the given data already existed"
+                }
+            ]
+        },
+        {
+            "name": "BRANCH_IS_BLOCK",
+            "code": "1011",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ผู้ใช้งานถูกระงับ"
+                },
+                {
+                    "language": "EN",
+                    "description": "This branch_id is block"
+                }
+            ]
+        },
+        {
+            "name": "PERMISSION_DENIED",
+            "code": "1012",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณไม่มีสิทธิเข้าถึงข้อมูลนี้"
+                },
+                {
+                    "language": "EN",
+                    "description": "You cannot acces this data"
+                }
+            ]
+        },
+        {
+            "name": "PERMISSION_USER_NOT_ACCESS",
+            "code": "1013",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณไม่มีสิทธิจัดการที่นี่"
+                },
+                {
+                    "language": "EN",
+                    "description": "You dont have permission here"
+                }
+            ]
+        },
+        {
+            "name": "PASSWORD_CHANGED_SUCCESSFULLY",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "รหัสผ่านได้ถูกเปลี่ยนแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Your password have been change."
+                }
+            ]
+        },
+
+        {
+            "name": "NEW_PASSWORD_SAME_AS_OLD",
+            "code": "1014",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณไม่สามารถใช้รหัสผ่านเหมือนกับรหัสผ่านเก่าได้"
+                },
+                {
+                    "language": "EN",
+                    "description": "You cannot use your old password."
+                }
+            ]
+        },
+        {
+            "name": "PLEASE_LOG_IN_AGAIN",
+            "code": "1015",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "กรุณาเข้าสู่ระบบใหม่ค่ะ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Pls re-login"
+                }
+            ]
+        },
+        {
+            "name": "INVALID_RESET_TOKEN",
+            "code": "1016",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "รีเซทโทเคนไม่ถูกต้อง"
+                },
+                {
+                    "language": "EN",
+                    "description": "Your reset token is invalid."
+                }
+            ]
+        },
+        {
+            "name": "RESET_TOKEN_EXPIRED",
+            "code": "1017",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "รีเซทโทเคนหมดอายุ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Your reset token is expired."
+                }
+            ]
+        },
+        {
+            "name": "SEND_LINK_IF_EMAIL_EXIST",
+            "code": "0000",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณจะได้รับอีเมลหากอีเมลของคุณมีอยุ่ในระบบเรา"
+                },
+                {
+                    "language": "EN",
+                    "description": "If the email exists in our system, you will receive an email."
+                }
+            ]
+        },
+        {
+            "name": "UNVERIFIED_EMAIL",
+            "code": "1018",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "โปรดยืนยันอีเมลของคุณก่อนครับ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Please verify your email first."
+                }
+            ]
+        },
+        {
+            "name": "2FA_ALREADY_ENABLED",
+            "code": "1019",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณได้เปิดใช้งาน 2FA ไปแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "You already enabled 2FA."
+                }
+            ]
+        },
+        {
+            "name": "HAVE_TO_ENABLED_2FA",
+            "code": "1020",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณต้องเปิดใช้งาน 2FA ก่อนค่ะ"
+                },
+                {
+                    "language": "EN",
+                    "description": "You have to enable 2FA first."
+                }
+            ]
+        },
+        {
+            "name": "PLS_WAIT_TWENTY_SECONDS",
+            "code": "1021",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "โปรดรอ 20 วินาทีก่อนส่ง OTP อีกครั้งค่ะ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Pls wait twenty second before retry."
+                }
+            ]
+        },
+        {
+            "name": "BLOCKED_30_MINUTES",
+            "code": "1022",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณถูกระงับ, โปรดรอ 30 นาทีก่อนเรียกใช้อีกครั้ง"
+                },
+                {
+                    "language": "EN",
+                    "description": "You are block, pls wait 30 mins before continue."
+                }
+            ]
+        },
+        {
+            "name": "MERCHANT_CODE_DUP",
+            "code": "1023",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ข้อมูลซ้ำกับข้อมูลที่มีอยู่ในระบบ"
+                },
+                {
+                    "language": "EN",
+                    "description": "Duplicate value with existing data."
+                }
+            ]
+        },
+        {
+            "name": "BRANCH_INVALID",
+            "code": "1024",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ไม่พบ branch"
+                },
+                {
+                    "language": "EN",
+                    "description": "branch in valid"
+                }
+            ]
+        },
+        {
+            "name": "WRONG_PASSWORD_WARNING_BEFORE_BLOCK",
+            "code": "1025",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ถ้าหากรอกหัสผ่านผิดอีก 1 ครั้งคุณจะถูกระงับ"
+                },
+                {
+                    "language": "EN",
+                    "description": "You will be block the next password failed attemp"
+                }
+            ]
+        },
+        {
+            "name": "BLOCKED_AFTER_THREE_PASSWORD_FAILED_ATTEMP",
+            "code": "1026",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณถูกระงับเนื่องจากใส่หรัสผ่านผิดเยอะเกินไป"
+                },
+                {
+                    "language": "EN",
+                    "description": "You are blocked after too many wrong password"
+                }
+            ]
+        },
+        {
+            "name": "WRONG_OTP_WARNING_BEFORE_BLOCK",
+            "code": "1027",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ถ้าหากรอก OTP ผิดอีก 1 ครั้งคุณจะถูกเตะออกจากระบบ"
+                },
+                {
+                    "language": "EN",
+                    "description": "You will be force logout the next otp failed attemp"
+                }
+            ]
+        },
+        {
+            "name": "BLOCKED_AFTER_THREE_OTP_FAILED_ATTEMP",
+            "code": "1028",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณถูกเตะออกจากระบบเนื่องจากใส่เลข OTP ผิดเยอะเกินไป"
+                },
+                {
+                    "language": "EN",
+                    "description": "You are force logout after too many wrong otp"
+                }
+            ]
+        },
+        {
+            "name": "EMAIL_IS_VERIFIED",
+            "code": "1029",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณได้ยืนยันอีเมลไปแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "ํYour email is already verified."
+                }
+            ]
+        },
+        {
+            "name": "YOU_ARE_BLOCKED_PLS_WAIT",
+            "code": "1030",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณถูกระงับในขณะนี้ โปรดรอ 30 นาทีก่อนลองใหม่"
+                },
+                {
+                    "language": "EN",
+                    "description": "You are currently blocked please wait 30 minutes before try again"
+                }
+            ]
+        },
+        {
+            "name": "YOU_CANNOT_ADD_BRANCH",
+            "code": "1031",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "คุณไม่สามารถเพิ่มสาขาในร้านค้านี้"
+                },
+                {
+                    "language": "EN",
+                    "description": "You are not allow to add branch in this merchant"
+                }
+            ]
+        },
+        {
+            "name": "EMAIL_VERIFY_LINK_EXPIRED",
+            "code": "1032",
+            "description": [
+                {
+                    "language": "TH",
+                    "description": "ลิงค์ยืนยันอีเมลหมดอายุแล้ว"
+                },
+                {
+                    "language": "EN",
+                    "description": "Your email verification link is expired."
+                }
+            ]
+        }
+    ]
+}

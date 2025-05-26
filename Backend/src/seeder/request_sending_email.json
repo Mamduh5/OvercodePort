@@ -1,0 +1,41 @@
+[
+    {
+        "table": "request_sending_email",
+        "schema": {
+            "request_sending_email_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": true
+            },
+            "topic_of_request": {
+                "type": "integer",
+                "notNullable": true,
+                "comment": "1 = VERIFY_EMAIL , 2 = FORGOT_PASSWORD, 3 = ENABLE_2FA, 4 = DISABLE_2FA",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'VERIFY_EMAIL' WHEN ${column2} = 2 THEN 'FORGOT_PASSWORD' WHEN ${column2} = 3 THEN 'ENABLE_2FA' WHEN ${column2} = 4 THEN 'DISABLE_2FA' ELSE 'UNKNOWN' END AS topic_of_request "
+            },
+            "email": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "reset_token": {
+                "type": "string",
+                "length": 255,
+                "notNullable": true
+            },
+            "reset_token_expiry_at": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            }
+
+        },
+        "data": []
+    }
+]

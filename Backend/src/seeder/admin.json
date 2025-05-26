@@ -1,0 +1,63 @@
+[
+  {
+    "table": "admins",
+    "schema": {
+      "admin_id": {
+        "type": "increments",
+        "primary": true
+      },
+      "first_name": {
+        "type": "string",
+        "length": 50,
+        "notNullable": false
+      },
+      "last_name": {
+        "type": "string",
+        "length": 50,
+        "notNullable": false
+      },
+      "email": {
+        "type": "string",
+        "length": 50,
+        "unique": true,
+        "notNullable": true
+      },
+      "email_verification": {
+        "type": "integer",
+        "comment": "0 = UNVERIFIED, 1 = VERIFIED",
+        "querystring": "CASE WHEN ${column1} = 0 THEN 'UNVERIFIED' WHEN ${column2} = 1 THEN 'VERIFIED' ELSE 'UNKNOWN' END AS email_verification",
+        "default": 0,
+        "notNullable": true
+      },
+      "is_2fa_active": {
+        "type": "integer",
+        "comment": "102 = ACTIVE, 402 = INACTIVE",
+        "querystring": "CASE WHEN ${column1} = 1 THEN 'ACTIVE' WHEN ${column2} = 0 THEN 'INACTIVE' ELSE 'UNKNOWN' END AS is_2fa_active",
+        "default": 0,
+        "notNullable": true
+      },
+      "password_hash": {
+        "type": "string",
+        "length": 255,
+        "notNullable": true
+      },
+      "refresh_token": {
+        "type": "string",
+        "length": 128,
+        "notNullable": true
+      }
+    },
+    "data": [
+      {
+        "first_name": "Mster Yi",
+        "last_name": "Grand Mater",
+        "email": "MASTER_TEST1@gmail.com",
+        "password_hash": "$argon2id$v=19$m=65536,t=5,p=1$WnopqwB5J891T521I5jbpw$XEk4kYd6X8gAQxfUB6oXW5Db61yhwCqVpT1rXwK1KWk",
+        "refresh_token": "c676020e48e1866182cf29b6bf29a3eeef12ff8619c6f9dc0183b4a7a12fc43bd7234b43156f1e89e46ab74d01f50ecd1a94a6f2def47fae6828a1f2ceb49a68",
+        "status": 102,
+        "email_verification": 1,
+        "is_2fa_active":1
+      }
+    ]
+  }
+]

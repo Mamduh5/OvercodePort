@@ -1,0 +1,49 @@
+
+
+stages:
+  - stop_pm2
+  - pull_code
+  - start_pm2
+
+stop_pm2:
+  stage: stop_pm2
+  script:
+    - \. /home/gitlab-runner/.nvm/nvm.sh
+    - pm2 stop epaymentsolutions-dev
+  tags:
+    - epaymentsolution
+  only:
+    refs:
+      - develop
+    changes:
+      - version.txt
+
+pull_code:
+  stage: pull_code
+  script:
+    - \. /home/gitlab-runner/.nvm/nvm.sh
+    - cd /mnt/data/epaymentsolution-backoffice
+    - git pull --no-edit
+    # - npm i
+  tags:
+    - epaymentsolution
+  only:
+    refs:
+      - develop
+    changes:
+      - version.txt
+
+start_pm2:
+  stage: start_pm2
+  script:
+    - \. /home/gitlab-runner/.nvm/nvm.sh
+    - pm2 start epaymentsolutions-dev
+  tags:
+    - epaymentsolution
+  only:
+    refs:
+      - develop
+    changes:
+      - version.txt
+
+

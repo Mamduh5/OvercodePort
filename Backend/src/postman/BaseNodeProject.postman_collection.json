@@ -1,0 +1,2231 @@
+{
+	"info": {
+		"_postman_id": "ce7d35d2-baf8-4e6f-8568-38e52b838c34",
+		"name": "BaseNodeProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37436980"
+	},
+	"item": [
+		{
+			"name": "Call Server",
+			"item": [
+				{
+					"name": "First Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOSTNAME}}{{PREFIX}}/",
+							"host": [
+								"{{HOSTNAME}}{{PREFIX}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TOKEN",
+			"item": [
+				{
+					"name": "ADMINS",
+					"item": [
+						{
+							"name": "INFO",
+							"item": [
+								{
+									"name": "Admin Info",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/admin/info",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"admin",
+												"info"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Admin Info",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"FirstName\": \"Mam\",\r\n    \"LastName\": \"The chicken of Zount\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/update/admin/info",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"update",
+												"admin",
+												"info"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Change Admin Password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"OldPassword\": \"Supers00bbb#123455\",\r\n    \"NewPassword\": \"Supers00bbb#duhmam\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/change/password",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"change",
+												"password"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "LIST",
+							"item": [
+								{
+									"name": "Get All Admin List",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Manually log all cookies for debugging\r",
+													"console.log(\"All cookies: \", pm.cookies.toObject());  // Logs all cookies\r",
+													"\r",
+													"// Get the specific token from cookies\r",
+													"const token = pm.cookies.get('x-access-token');  // Replace with actual cookie name\r",
+													"console.log(\"Token from cookies: \", token);  // Log the token to verify if it's accessible\r",
+													"\r",
+													"if (token) {\r",
+													"    console.log(\"Token found in cookies. Setting up refresh every 10 minutes...\");\r",
+													"\r",
+													"    setInterval(function() {\r",
+													"        console.log(\"Refreshing token...\");\r",
+													"\r",
+													"        pm.sendRequest({\r",
+													"            url: pm.environment.get(\"HOSTNAME\") + pm.environment.get(\"PREFIX\") + \"/token/extend/cookie\",  // Dynamically build URL\r",
+													"            method: 'GET',  // Use POST if your refresh API needs POST\r",
+													"            headers: {\r",
+													"                'accept-language': pm.environment.get(\"LANGUAGE\"),\r",
+													"                'x-platform': pm.environment.get(\"PLATFORM\")\r",
+													"            },\r",
+													"            auth: {\r",
+													"                type: 'basic',\r",
+													"                username: pm.environment.get(\"AUTHUSERNAME\"),  // Username from environment\r",
+													"                password: pm.environment.get(\"AUTHPASSWORD\")   // Password from environment\r",
+													"            }\r",
+													"        }, function (err, res) {\r",
+													"            if (err) {\r",
+													"                console.log('Failed to refresh token:', err);\r",
+													"                return;\r",
+													"            }\r",
+													"\r",
+													"            console.log(\"Response from refresh endpoint: \", res.json());  // Log the full response\r",
+													"\r",
+													"            // Set the new token in cookies after refresh\r",
+													"            const newToken = res.json().access_token;\r",
+													"            pm.cookies.set('x-access-token', newToken);  // Update token in cookies\r",
+													"            console.log('Token refreshed:', newToken);\r",
+													"        });\r",
+													"    }, 600000);  // Refresh every 10 minutes\r",
+													"} else {\r",
+													"    console.log(\"JWT token not found. Please log in first.\");\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/list?RoleModelId=1",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"list"
+											],
+											"query": [
+												{
+													"key": "RoleModelId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "INSERT",
+							"item": [
+								{
+									"name": "Insert Admin",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"Email\":\"deloka02123e@gmail.com\",\r\n    \"Password\":\"Almosttherekeepup2#\",\r\n    \"FirstName\":\"SkyDragon\",\r\n    \"LastName\":\"TheNobleRace\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/insert",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"insert"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "RESET PASSWORD",
+							"item": [
+								{
+									"name": "Requset Reset Password",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"Email\": \"mamduh2542@gmail.com\",\r\n     \"TokenRecaptcha\":\"03AFcWeA5sikoybWUKVHcOilA1UAy0UQbk2qr0bdy4TuVWf3ZTKjgTdTtrD89GF4YcsGx9pVZyh6_oBh09HaN7j95_YuJwtLMpPp-RFZt9Gc5l_v-tIjSn4ig82XjmVOyoZica-f1sZ109kWF789qKnW4_h7RcztZPxMJD5SrFaIyWBVY169mSUJlVU1OCmk96sWQrTxB34Ins3F_JU4ekhPiKOj1NMVGNCTd9J2KIFt1w5nhMJjcXxFca7SsnxbGqkIjTDDuHFyq8z2vDkoD8JYL8c4Vm3FT3jhlRmBKxiStHB1EMGM1KM9YDXnNCBwbu9bxGq8WRt-Zn-1RbXhe9SsUj7yTQTSeQ7yTY3ug5ks22wcsQNcRrJlaD4A9cb9qc3L5Y2p3qU07jQ4oyR7u66vWlAqRfkSqy9_DPfX0SvFrdznnC7oNguIlm0YCFjq_LySNRtVVs--KNkhV_10KehXPd9tLikPKdOdZ2ehLxBn5fu5_d0X46XwovMBVHUANxnX68dPjJOp9Dsp2Es41QVLtrU2fyy-YYQQftkS-UppJWDsnOOn2E7ZGTvgmU6zL62GjQXX3jSsHPD16JIIddxmJLHpKprLZnL7MqiP69p3x-6WQmaMuH-VPtNt_3d32tS5LrL29Wmb2wmCjPU5LgVg1wjO-MK2CtqfCB-lP6r9K223GpmnukVJLc_5bMfXi4FCWHiey6VdSxdGkWc7zz7lrwyRNk8-ICXxocrxt0TOkt7DKEMcjvi0tSjrc_TG8M8F6pukbqWA0PqLefBJk9V61OY7JgsSatkA-wrQzEMdwASuLtK7TsPf8hv3RW13nMr9CPLyTO92Hb8TWqRo3j1CMzEoBpxraLD5nlb0DUoLelkJcrT3oEV7v9-ndfZT9OlGxas7dc_4pj92qIx0dpHcgklKr_2TiyEHoP3LcQeHbGDbINaCNI-rPWzZwmgOaDD4SBGfK-AJhCjoYuzuycU_RVHvKDwQG8ETUOgFHNfc4j5gqJ8Blwjt3x4GIYGgKjZqm4hkyUNp-ggT44LNX-3w2vwnSu2GMiVfbyhQTxVO9Zh1KZcjro23-Uz_woA95Ei8Vtqpsx9qa2Hdfz1NQ9g-T1gChDFAxM8enSl_VULeUyEqs9otXxOF5Ej52gSvpQHDFsUkoFpwJcN0N-umHHpmFkYLIdpE6HwowZMNo83-GadAdrH5P9ar-oLgS4zzc43m9eXyPhfxWQfVecaMEAifio46xKRo90rYo0W4QuH9FbcyCzjuuLsCCunK_be5E88PPYZnqQLn96o0fVcFOXfjef_DO3dbwp_aCns_lsLSTzZWJ2zGduuI64AmWwLJtReVqAiUHVlc08OQtbfDPwDmahXibSxWiYDAGsVnoM_YU4C01Otc3_eQ6_2hu7lVln4NpLv6Z7Pz4YA078EDjtEcxLwaV6heGf1_m_ZOVv3rq4oO7LCbZxXFb-FxJuSC0bew18S2jBQwTKJMu6ePUWqpnSTqcVOv0N7-tS6L5gI8SQFK6NC8zJdMFDx2cYjVNcvkTkiIu3oUDfN1A7c13eFvnKQ2Wq8bHq9rcgBe-005RyxEHgIyYMzYx9LcnFgVhnSi0v3TXqA65fsLn265yr_YsiYRfeSFX5xAgfZvQiPhJEnecwCCkY-bWqwlMy_J4qZC7YmIzNwEbDYaF-JMl0M42eEZ64ZflOJ9_ZdnAWbx8U95ejdo1_n2riNHBF_OPiPk9xIriyTawZ5RWuUElf2jB8KgwFk7lAR9wCpeW8YrH2S4sGRYwgn5ro_F5zsg0GrU94AkUky_6dZ9W-fY-mA2FtZrysvL0JNq7hjdj9loc_OXorE8K2RHu7UF50oBn7fTmcBlOlf_T7exdkYif0Yz3xROaCsxCsRNLr0ax_wRDq8_kKmXCosJwDwUvkug01obM-tOtPxSiuSnC9fh8yqgkvo1cg1dDmBRzQspjETwNR5NUzYSPEBK_Fs8DR_PQBBlyLD4ajG4SL\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/forgot/password",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"forgot",
+												"password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reset Password From Email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"NewPassword\": \"Supers00bbb#1234\",\r\n    \"Token\": \"c1016507470b23b5727dfe9a47e06c28cdb7253b0d13f5cf670cd57c09aada99\",\r\n    \"TokenRecaptcha\":\"03AFcWeA5sikoybWUKVHcOilA1UAy0UQbk2qr0bdy4TuVWf3ZTKjgTdTtrD89GF4YcsGx9pVZyh6_oBh09HaN7j95_YuJwtLMpPp-RFZt9Gc5l_v-tIjSn4ig82XjmVOyoZica-f1sZ109kWF789qKnW4_h7RcztZPxMJD5SrFaIyWBVY169mSUJlVU1OCmk96sWQrTxB34Ins3F_JU4ekhPiKOj1NMVGNCTd9J2KIFt1w5nhMJjcXxFca7SsnxbGqkIjTDDuHFyq8z2vDkoD8JYL8c4Vm3FT3jhlRmBKxiStHB1EMGM1KM9YDXnNCBwbu9bxGq8WRt-Zn-1RbXhe9SsUj7yTQTSeQ7yTY3ug5ks22wcsQNcRrJlaD4A9cb9qc3L5Y2p3qU07jQ4oyR7u66vWlAqRfkSqy9_DPfX0SvFrdznnC7oNguIlm0YCFjq_LySNRtVVs--KNkhV_10KehXPd9tLikPKdOdZ2ehLxBn5fu5_d0X46XwovMBVHUANxnX68dPjJOp9Dsp2Es41QVLtrU2fyy-YYQQftkS-UppJWDsnOOn2E7ZGTvgmU6zL62GjQXX3jSsHPD16JIIddxmJLHpKprLZnL7MqiP69p3x-6WQmaMuH-VPtNt_3d32tS5LrL29Wmb2wmCjPU5LgVg1wjO-MK2CtqfCB-lP6r9K223GpmnukVJLc_5bMfXi4FCWHiey6VdSxdGkWc7zz7lrwyRNk8-ICXxocrxt0TOkt7DKEMcjvi0tSjrc_TG8M8F6pukbqWA0PqLefBJk9V61OY7JgsSatkA-wrQzEMdwASuLtK7TsPf8hv3RW13nMr9CPLyTO92Hb8TWqRo3j1CMzEoBpxraLD5nlb0DUoLelkJcrT3oEV7v9-ndfZT9OlGxas7dc_4pj92qIx0dpHcgklKr_2TiyEHoP3LcQeHbGDbINaCNI-rPWzZwmgOaDD4SBGfK-AJhCjoYuzuycU_RVHvKDwQG8ETUOgFHNfc4j5gqJ8Blwjt3x4GIYGgKjZqm4hkyUNp-ggT44LNX-3w2vwnSu2GMiVfbyhQTxVO9Zh1KZcjro23-Uz_woA95Ei8Vtqpsx9qa2Hdfz1NQ9g-T1gChDFAxM8enSl_VULeUyEqs9otXxOF5Ej52gSvpQHDFsUkoFpwJcN0N-umHHpmFkYLIdpE6HwowZMNo83-GadAdrH5P9ar-oLgS4zzc43m9eXyPhfxWQfVecaMEAifio46xKRo90rYo0W4QuH9FbcyCzjuuLsCCunK_be5E88PPYZnqQLn96o0fVcFOXfjef_DO3dbwp_aCns_lsLSTzZWJ2zGduuI64AmWwLJtReVqAiUHVlc08OQtbfDPwDmahXibSxWiYDAGsVnoM_YU4C01Otc3_eQ6_2hu7lVln4NpLv6Z7Pz4YA078EDjtEcxLwaV6heGf1_m_ZOVv3rq4oO7LCbZxXFb-FxJuSC0bew18S2jBQwTKJMu6ePUWqpnSTqcVOv0N7-tS6L5gI8SQFK6NC8zJdMFDx2cYjVNcvkTkiIu3oUDfN1A7c13eFvnKQ2Wq8bHq9rcgBe-005RyxEHgIyYMzYx9LcnFgVhnSi0v3TXqA65fsLn265yr_YsiYRfeSFX5xAgfZvQiPhJEnecwCCkY-bWqwlMy_J4qZC7YmIzNwEbDYaF-JMl0M42eEZ64ZflOJ9_ZdnAWbx8U95ejdo1_n2riNHBF_OPiPk9xIriyTawZ5RWuUElf2jB8KgwFk7lAR9wCpeW8YrH2S4sGRYwgn5ro_F5zsg0GrU94AkUky_6dZ9W-fY-mA2FtZrysvL0JNq7hjdj9loc_OXorE8K2RHu7UF50oBn7fTmcBlOlf_T7exdkYif0Yz3xROaCsxCsRNLr0ax_wRDq8_kKmXCosJwDwUvkug01obM-tOtPxSiuSnC9fh8yqgkvo1cg1dDmBRzQspjETwNR5NUzYSPEBK_Fs8DR_PQBBlyLD4ajG4SL\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/reset/password",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"reset",
+												"password"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "VERIFY EMAIL",
+							"item": [
+								{
+									"name": "Request Verify Email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"Email\": \"deloka01@gmail.com\",\r\n     \"TokenRecaptcha\":\"03AFcWeA5sikoybWUKVHcOilA1UAy0UQbk2qr0bdy4TuVWf3ZTKjgTdTtrD89GF4YcsGx9pVZyh6_oBh09HaN7j95_YuJwtLMpPp-RFZt9Gc5l_v-tIjSn4ig82XjmVOyoZica-f1sZ109kWF789qKnW4_h7RcztZPxMJD5SrFaIyWBVY169mSUJlVU1OCmk96sWQrTxB34Ins3F_JU4ekhPiKOj1NMVGNCTd9J2KIFt1w5nhMJjcXxFca7SsnxbGqkIjTDDuHFyq8z2vDkoD8JYL8c4Vm3FT3jhlRmBKxiStHB1EMGM1KM9YDXnNCBwbu9bxGq8WRt-Zn-1RbXhe9SsUj7yTQTSeQ7yTY3ug5ks22wcsQNcRrJlaD4A9cb9qc3L5Y2p3qU07jQ4oyR7u66vWlAqRfkSqy9_DPfX0SvFrdznnC7oNguIlm0YCFjq_LySNRtVVs--KNkhV_10KehXPd9tLikPKdOdZ2ehLxBn5fu5_d0X46XwovMBVHUANxnX68dPjJOp9Dsp2Es41QVLtrU2fyy-YYQQftkS-UppJWDsnOOn2E7ZGTvgmU6zL62GjQXX3jSsHPD16JIIddxmJLHpKprLZnL7MqiP69p3x-6WQmaMuH-VPtNt_3d32tS5LrL29Wmb2wmCjPU5LgVg1wjO-MK2CtqfCB-lP6r9K223GpmnukVJLc_5bMfXi4FCWHiey6VdSxdGkWc7zz7lrwyRNk8-ICXxocrxt0TOkt7DKEMcjvi0tSjrc_TG8M8F6pukbqWA0PqLefBJk9V61OY7JgsSatkA-wrQzEMdwASuLtK7TsPf8hv3RW13nMr9CPLyTO92Hb8TWqRo3j1CMzEoBpxraLD5nlb0DUoLelkJcrT3oEV7v9-ndfZT9OlGxas7dc_4pj92qIx0dpHcgklKr_2TiyEHoP3LcQeHbGDbINaCNI-rPWzZwmgOaDD4SBGfK-AJhCjoYuzuycU_RVHvKDwQG8ETUOgFHNfc4j5gqJ8Blwjt3x4GIYGgKjZqm4hkyUNp-ggT44LNX-3w2vwnSu2GMiVfbyhQTxVO9Zh1KZcjro23-Uz_woA95Ei8Vtqpsx9qa2Hdfz1NQ9g-T1gChDFAxM8enSl_VULeUyEqs9otXxOF5Ej52gSvpQHDFsUkoFpwJcN0N-umHHpmFkYLIdpE6HwowZMNo83-GadAdrH5P9ar-oLgS4zzc43m9eXyPhfxWQfVecaMEAifio46xKRo90rYo0W4QuH9FbcyCzjuuLsCCunK_be5E88PPYZnqQLn96o0fVcFOXfjef_DO3dbwp_aCns_lsLSTzZWJ2zGduuI64AmWwLJtReVqAiUHVlc08OQtbfDPwDmahXibSxWiYDAGsVnoM_YU4C01Otc3_eQ6_2hu7lVln4NpLv6Z7Pz4YA078EDjtEcxLwaV6heGf1_m_ZOVv3rq4oO7LCbZxXFb-FxJuSC0bew18S2jBQwTKJMu6ePUWqpnSTqcVOv0N7-tS6L5gI8SQFK6NC8zJdMFDx2cYjVNcvkTkiIu3oUDfN1A7c13eFvnKQ2Wq8bHq9rcgBe-005RyxEHgIyYMzYx9LcnFgVhnSi0v3TXqA65fsLn265yr_YsiYRfeSFX5xAgfZvQiPhJEnecwCCkY-bWqwlMy_J4qZC7YmIzNwEbDYaF-JMl0M42eEZ64ZflOJ9_ZdnAWbx8U95ejdo1_n2riNHBF_OPiPk9xIriyTawZ5RWuUElf2jB8KgwFk7lAR9wCpeW8YrH2S4sGRYwgn5ro_F5zsg0GrU94AkUky_6dZ9W-fY-mA2FtZrysvL0JNq7hjdj9loc_OXorE8K2RHu7UF50oBn7fTmcBlOlf_T7exdkYif0Yz3xROaCsxCsRNLr0ax_wRDq8_kKmXCosJwDwUvkug01obM-tOtPxSiuSnC9fh8yqgkvo1cg1dDmBRzQspjETwNR5NUzYSPEBK_Fs8DR_PQBBlyLD4ajG4SL\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/verify/email",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"verify",
+												"email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Verify Email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var accessToken = pm.response.json().res_data.token\r",
+													"if (accessToken) {\r",
+													"    pm.environment.set(\"TOKEN\", accessToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "basic",
+											"basic": [
+												{
+													"key": "password",
+													"value": "{{AUTHPASSWORD}}",
+													"type": "string"
+												},
+												{
+													"key": "username",
+													"value": "{{AUTHUSERNAME}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											},
+											{
+												"key": "x-access-token",
+												"value": "{{TOKEN}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"tokenVerifyEmail\": \"74d22949597f1cffa64d186117c560cdd96eb9a090dd42300f8623211b80cc64\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/admins/verify/email",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"admins",
+												"verify",
+												"email"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "2FA",
+							"item": [
+								{
+									"name": "ENABLE DISABLE",
+									"item": [
+										{
+											"name": "Request Enable 2FA",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var accessToken = pm.response.json().res_data.token\r",
+															"if (accessToken) {\r",
+															"    pm.environment.set(\"TOKEN\", accessToken);\r",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/request/enable",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"request",
+														"enable"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Confirm Enable 2FA",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    // \"Email\": \"mamduh2542@gmail.com\",\r\n    \"Token\": \"15c5c29a14eb4d3422cd10e4106c885441740772b80baeeb715df8129906f069\"\r\n    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/verify/enable",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"verify",
+														"enable"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Disable 2FA",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var accessToken = pm.response.json().res_data.token\r",
+															"if (accessToken) {\r",
+															"    pm.environment.set(\"TOKEN\", accessToken);\r",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/disable",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"disable"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Status 2FA",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var accessToken = pm.response.json().res_data.token\r",
+															"if (accessToken) {\r",
+															"    pm.environment.set(\"TOKEN\", accessToken);\r",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/status",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"status"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "REQUEST OTP",
+									"item": [
+										{
+											"name": "Request Otp Email",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var accessToken = pm.response.json().res_data.token\r",
+															"var refcode = pm.response.json().res_data.RefCode\r",
+															"\r",
+															"if (accessToken) {\r",
+															"    pm.environment.set(\"TOKEN\", accessToken);\r",
+															"}\r",
+															"if (refcode) {\r",
+															"    pm.environment.set(\"REFCODE\", refcode);\r",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/request/otp/email",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"request",
+														"otp",
+														"email"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Confirm Otp Email",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var accessToken = pm.response.json().res_data.token\r",
+															"if (accessToken) {\r",
+															"    pm.environment.set(\"TOKEN\", accessToken);\r",
+															"}\r",
+															"\r",
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													},
+													{
+														"key": "x-access-token",
+														"value": "{{TOKEN}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"otp\": \"812038\",\r\n    \"RefCode\": \"{{REFCODE}}\"\r\n\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/verify/otp/email",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"verify",
+														"otp",
+														"email"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "RESEND OTP LOGIN",
+									"item": [
+										{
+											"name": "Resend otp login",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var tempToken = pm.response.json().res_data.TempToken",
+															"var refcode = pm.response.json().res_data.RefCode",
+															"",
+															"if (tempToken) {",
+															"    pm.environment.set(\"TEMPTOKEN\", tempToken);",
+															"}",
+															"if (refcode) {",
+															"    pm.environment.set(\"REFCODE\", refcode);",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												},
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "basic",
+													"basic": [
+														{
+															"key": "password",
+															"value": "{{AUTHPASSWORD}}",
+															"type": "string"
+														},
+														{
+															"key": "username",
+															"value": "{{AUTHUSERNAME}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "accept-language",
+														"value": "{{LANGUAGE}}",
+														"type": "text"
+													},
+													{
+														"key": "x-platform",
+														"value": "{{PLATFORM}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    // \"Email\": \"MASTER_TEST1@gmail.com\",\n    // \"Password\": \"1234\",\n\n    // \"Email\": \"mamduh.h@smartblocktech.ai\",\n    // \"Email\": \"chananchida.b@smartblocktech.ai\",\n    // \"Email\":\"nitradee.b@smartblocktech.ai\",\n    \"Password\": \"Supers00bbb#1234\",\n    \"Email\": \"mamduh2542@gmail.com\",\n    // \"Password\": \"Almosttherekeepup2#\",\n    // \"Email\": \"phanumat.h@smartblocktech.ai\",\n    // \"Password\": \"Pass123456789##\" ,\n    // \"Password\": \"Pass#1234567\",\n\n    \"TokenRecaptcha\":\"03AFcWeA5sikoybWUKVHcOilA1UAy0UQbk2qr0bdy4TuVWf3ZTKjgTdTtrD89GF4YcsGx9pVZyh6_oBh09HaN7j95_YuJwtLMpPp-RFZt9Gc5l_v-tIjSn4ig82XjmVOyoZica-f1sZ109kWF789qKnW4_h7RcztZPxMJD5SrFaIyWBVY169mSUJlVU1OCmk96sWQrTxB34Ins3F_JU4ekhPiKOj1NMVGNCTd9J2KIFt1w5nhMJjcXxFca7SsnxbGqkIjTDDuHFyq8z2vDkoD8JYL8c4Vm3FT3jhlRmBKxiStHB1EMGM1KM9YDXnNCBwbu9bxGq8WRt-Zn-1RbXhe9SsUj7yTQTSeQ7yTY3ug5ks22wcsQNcRrJlaD4A9cb9qc3L5Y2p3qU07jQ4oyR7u66vWlAqRfkSqy9_DPfX0SvFrdznnC7oNguIlm0YCFjq_LySNRtVVs--KNkhV_10KehXPd9tLikPKdOdZ2ehLxBn5fu5_d0X46XwovMBVHUANxnX68dPjJOp9Dsp2Es41QVLtrU2fyy-YYQQftkS-UppJWDsnOOn2E7ZGTvgmU6zL62GjQXX3jSsHPD16JIIddxmJLHpKprLZnL7MqiP69p3x-6WQmaMuH-VPtNt_3d32tS5LrL29Wmb2wmCjPU5LgVg1wjO-MK2CtqfCB-lP6r9K223GpmnukVJLc_5bMfXi4FCWHiey6VdSxdGkWc7zz7lrwyRNk8-ICXxocrxt0TOkt7DKEMcjvi0tSjrc_TG8M8F6pukbqWA0PqLefBJk9V61OY7JgsSatkA-wrQzEMdwASuLtK7TsPf8hv3RW13nMr9CPLyTO92Hb8TWqRo3j1CMzEoBpxraLD5nlb0DUoLelkJcrT3oEV7v9-ndfZT9OlGxas7dc_4pj92qIx0dpHcgklKr_2TiyEHoP3LcQeHbGDbINaCNI-rPWzZwmgOaDD4SBGfK-AJhCjoYuzuycU_RVHvKDwQG8ETUOgFHNfc4j5gqJ8Blwjt3x4GIYGgKjZqm4hkyUNp-ggT44LNX-3w2vwnSu2GMiVfbyhQTxVO9Zh1KZcjro23-Uz_woA95Ei8Vtqpsx9qa2Hdfz1NQ9g-T1gChDFAxM8enSl_VULeUyEqs9otXxOF5Ej52gSvpQHDFsUkoFpwJcN0N-umHHpmFkYLIdpE6HwowZMNo83-GadAdrH5P9ar-oLgS4zzc43m9eXyPhfxWQfVecaMEAifio46xKRo90rYo0W4QuH9FbcyCzjuuLsCCunK_be5E88PPYZnqQLn96o0fVcFOXfjef_DO3dbwp_aCns_lsLSTzZWJ2zGduuI64AmWwLJtReVqAiUHVlc08OQtbfDPwDmahXibSxWiYDAGsVnoM_YU4C01Otc3_eQ6_2hu7lVln4NpLv6Z7Pz4YA078EDjtEcxLwaV6heGf1_m_ZOVv3rq4oO7LCbZxXFb-FxJuSC0bew18S2jBQwTKJMu6ePUWqpnSTqcVOv0N7-tS6L5gI8SQFK6NC8zJdMFDx2cYjVNcvkTkiIu3oUDfN1A7c13eFvnKQ2Wq8bHq9rcgBe-005RyxEHgIyYMzYx9LcnFgVhnSi0v3TXqA65fsLn265yr_YsiYRfeSFX5xAgfZvQiPhJEnecwCCkY-bWqwlMy_J4qZC7YmIzNwEbDYaF-JMl0M42eEZ64ZflOJ9_ZdnAWbx8U95ejdo1_n2riNHBF_OPiPk9xIriyTawZ5RWuUElf2jB8KgwFk7lAR9wCpeW8YrH2S4sGRYwgn5ro_F5zsg0GrU94AkUky_6dZ9W-fY-mA2FtZrysvL0JNq7hjdj9loc_OXorE8K2RHu7UF50oBn7fTmcBlOlf_T7exdkYif0Yz3xROaCsxCsRNLr0ax_wRDq8_kKmXCosJwDwUvkug01obM-tOtPxSiuSnC9fh8yqgkvo1cg1dDmBRzQspjETwNR5NUzYSPEBK_Fs8DR_PQBBlyLD4ajG4SL\"\n\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{HOSTNAME}}{{PREFIX}}/twofa/login/request/otp/email",
+													"host": [
+														"{{HOSTNAME}}{{PREFIX}}"
+													],
+													"path": [
+														"twofa",
+														"login",
+														"request",
+														"otp",
+														"email"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "LOGS DATA",
+					"item": [
+						{
+							"name": "Admin Movement Logs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().res_data.token\r",
+											"if (accessToken) {\r",
+											"    pm.environment.set(\"TOKEN\", accessToken);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{AUTHPASSWORD}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{AUTHUSERNAME}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept-language",
+										"value": "{{LANGUAGE}}",
+										"type": "text"
+									},
+									{
+										"key": "x-platform",
+										"value": "{{PLATFORM}}",
+										"type": "text"
+									},
+									{
+										"key": "x-access-token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOSTNAME}}{{PREFIX}}/logs/admins/data?Page=1&PageSize=5&SortColumn=TIMESTAMP&SortOrder=DESC",
+									"host": [
+										"{{HOSTNAME}}{{PREFIX}}"
+									],
+									"path": [
+										"logs",
+										"admins",
+										"data"
+									],
+									"query": [
+										{
+											"key": "Page",
+											"value": "1"
+										},
+										{
+											"key": "PageSize",
+											"value": "5"
+										},
+										{
+											"key": "SortColumn",
+											"value": "TIMESTAMP"
+										},
+										{
+											"key": "SortOrder",
+											"value": "DESC"
+										},
+										{
+											"key": "StartDate",
+											"value": "2025-04-02",
+											"disabled": true
+										},
+										{
+											"key": "EndDate",
+											"value": "2025-04-17",
+											"disabled": true
+										},
+										{
+											"key": "SearchTerm",
+											"value": "CREATE",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Logs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().res_data.token\r",
+											"if (accessToken) {\r",
+											"    pm.environment.set(\"TOKEN\", accessToken);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{AUTHPASSWORD}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{AUTHUSERNAME}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept-language",
+										"value": "{{LANGUAGE}}",
+										"type": "text"
+									},
+									{
+										"key": "x-platform",
+										"value": "{{PLATFORM}}",
+										"type": "text"
+									},
+									{
+										"key": "x-access-token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOSTNAME}}{{PREFIX}}/logs/login/data?Page=1&PageSize=100&SortOrder=DESC&SortColumn=TIMESTAMP",
+									"host": [
+										"{{HOSTNAME}}{{PREFIX}}"
+									],
+									"path": [
+										"logs",
+										"login",
+										"data"
+									],
+									"query": [
+										{
+											"key": "Page",
+											"value": "1"
+										},
+										{
+											"key": "PageSize",
+											"value": "100"
+										},
+										{
+											"key": "SearchTerm",
+											"value": "LOGIN_2FA_SUCCESS",
+											"disabled": true
+										},
+										{
+											"key": "SortOrder",
+											"value": "DESC"
+										},
+										{
+											"key": "SortColumn",
+											"value": "TIMESTAMP"
+										},
+										{
+											"key": "TestValidate",
+											"value": "\"SSSS\"",
+											"disabled": true
+										},
+										{
+											"key": "StartDate",
+											"value": "2025-04-10",
+											"disabled": true
+										},
+										{
+											"key": "EndDate",
+											"value": "2025-04-25",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Permission Logs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().res_data.token\r",
+											"if (accessToken) {\r",
+											"    pm.environment.set(\"TOKEN\", accessToken);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{AUTHPASSWORD}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{AUTHUSERNAME}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept-language",
+										"value": "{{LANGUAGE}}",
+										"type": "text"
+									},
+									{
+										"key": "x-platform",
+										"value": "{{PLATFORM}}",
+										"type": "text"
+									},
+									{
+										"key": "x-access-token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOSTNAME}}{{PREFIX}}/logs/permission/data?Page=1&PageSize=100&SortOrder=DESC&SortColumn=TIMESTAMP&RoleModelId=1",
+									"host": [
+										"{{HOSTNAME}}{{PREFIX}}"
+									],
+									"path": [
+										"logs",
+										"permission",
+										"data"
+									],
+									"query": [
+										{
+											"key": "Page",
+											"value": "1"
+										},
+										{
+											"key": "PageSize",
+											"value": "100"
+										},
+										{
+											"key": "SearchTerm",
+											"value": "UPDATE",
+											"disabled": true
+										},
+										{
+											"key": "SortOrder",
+											"value": "DESC"
+										},
+										{
+											"key": "SortColumn",
+											"value": "TIMESTAMP"
+										},
+										{
+											"key": "StartDate",
+											"value": "2025-03-11",
+											"disabled": true
+										},
+										{
+											"key": "EndDate",
+											"value": "2025-03-17",
+											"disabled": true
+										},
+										{
+											"key": "RoleModelId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POLICY",
+					"item": [
+						{
+							"name": "Password Policy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().res_data.token\r",
+											"if (accessToken) {\r",
+											"    pm.environment.set(\"TOKEN\", accessToken);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{AUTHPASSWORD}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{AUTHUSERNAME}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept-language",
+										"value": "{{LANGUAGE}}",
+										"type": "text"
+									},
+									{
+										"key": "x-platform",
+										"value": "{{PLATFORM}}",
+										"type": "text"
+									},
+									{
+										"key": "x-access-token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOSTNAME}}{{PREFIX}}/policy/get/password",
+									"host": [
+										"{{HOSTNAME}}{{PREFIX}}"
+									],
+									"path": [
+										"policy",
+										"get",
+										"password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"TEST01@mail.in.fo\",\n    \"password\": \"1234\",\n    \"role\":\"PATIENT\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/token/login",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"token",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Login Fail",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"TEST01@mail.in.fo\",\n    \"password\": \"12345\",\n    \"role\":\"PATIENT\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/token/login",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"token",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Login Fail Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "accept-language",
+												"value": "{{LANGUAGE}}",
+												"type": "text"
+											},
+											{
+												"key": "x-platform",
+												"value": "{{PLATFORM}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"TEST01@mail.in.fo\",\n    \"password\": \"1234\",\n    \"role\":\"PATIENT\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{HOSTNAME}}{{PREFIX}}/token/login",
+											"host": [
+												"{{HOSTNAME}}{{PREFIX}}"
+											],
+											"path": [
+												"token",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "DASHBOARD",
+					"item": [
+						{
+							"name": "Dashboard",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().res_data.token\r",
+											"if (accessToken) {\r",
+											"    pm.environment.set(\"TOKEN\", accessToken);\r",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{AUTHPASSWORD}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{AUTHUSERNAME}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "accept-language",
+										"value": "{{LANGUAGE}}",
+										"type": "text"
+									},
+									{
+										"key": "x-platform",
+										"value": "{{PLATFORM}}",
+										"type": "text"
+									},
+									{
+										"key": "x-access-token",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOSTNAME}}{{PREFIX}}/dashboard",
+									"host": [
+										"{{HOSTNAME}}{{PREFIX}}"
+									],
+									"path": [
+										"dashboard"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var accessToken = pm.response.json().res_data.token",
+									"if (accessToken) {",
+									"    pm.environment.set(\"TOKEN\", accessToken);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AUTHPASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AUTHUSERNAME}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "{{LANGUAGE}}",
+								"type": "text"
+							},
+							{
+								"key": "x-platform",
+								"value": "{{PLATFORM}}",
+								"type": "text"
+							},
+							{
+								"key": "x-temp-token",
+								"value": "{{TEMPTOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{HOSTNAME}}{{PREFIX}}/token/logout",
+							"host": [
+								"{{HOSTNAME}}{{PREFIX}}"
+							],
+							"path": [
+								"token",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AUTHPASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AUTHUSERNAME}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "{{LANGUAGE}}",
+								"type": "text"
+							},
+							{
+								"key": "x-platform",
+								"value": "{{PLATFORM}}",
+								"type": "text"
+							},
+							{
+								"key": "x-temp-token",
+								"value": "{{TEMPTOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"otp\": \"489212\",\n    \"TempToken\": \"{{TEMPTOKEN}}\",\n    \"RefCode\": \"{{REFCODE}}\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}{{PREFIX}}/token/login/verify/otp",
+							"host": [
+								"{{HOSTNAME}}{{PREFIX}}"
+							],
+							"path": [
+								"token",
+								"login",
+								"verify",
+								"otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var tempToken = pm.response.json().res_data.TempToken",
+									"var refcode = pm.response.json().res_data.RefCode",
+									"",
+									"if (tempToken) {",
+									"    pm.environment.set(\"TEMPTOKEN\", tempToken);",
+									"}",
+									"if (refcode) {",
+									"    pm.environment.set(\"REFCODE\", refcode);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AUTHPASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AUTHUSERNAME}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "{{LANGUAGE}}",
+								"type": "text"
+							},
+							{
+								"key": "x-platform",
+								"value": "{{PLATFORM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"Email\": \"MASTER_TEST1@gmail.com\",\n    // \"Password\": \"1234\",\n\n    \"Email\": \"mamduh2542@gmail.com\",\n    // \"Password\": \"123456789Pa##\",\n    // \"Email\": \"mamduh.h@smartblocktech.ai\",\n    \"Password\": \"Supers00bbb#1234\",\n    \"TokenRecaptcha\":\"03AFcWeA5sikoybWUKVHcOilA1UAy0UQbk2qr0bdy4TuVWf3ZTKjgTdTtrD89GF4YcsGx9pVZyh6_oBh09HaN7j95_YuJwtLMpPp-RFZt9Gc5l_v-tIjSn4ig82XjmVOyoZica-f1sZ109kWF789qKnW4_h7RcztZPxMJD5SrFaIyWBVY169mSUJlVU1OCmk96sWQrTxB34Ins3F_JU4ekhPiKOj1NMVGNCTd9J2KIFt1w5nhMJjcXxFca7SsnxbGqkIjTDDuHFyq8z2vDkoD8JYL8c4Vm3FT3jhlRmBKxiStHB1EMGM1KM9YDXnNCBwbu9bxGq8WRt-Zn-1RbXhe9SsUj7yTQTSeQ7yTY3ug5ks22wcsQNcRrJlaD4A9cb9qc3L5Y2p3qU07jQ4oyR7u66vWlAqRfkSqy9_DPfX0SvFrdznnC7oNguIlm0YCFjq_LySNRtVVs--KNkhV_10KehXPd9tLikPKdOdZ2ehLxBn5fu5_d0X46XwovMBVHUANxnX68dPjJOp9Dsp2Es41QVLtrU2fyy-YYQQftkS-UppJWDsnOOn2E7ZGTvgmU6zL62GjQXX3jSsHPD16JIIddxmJLHpKprLZnL7MqiP69p3x-6WQmaMuH-VPtNt_3d32tS5LrL29Wmb2wmCjPU5LgVg1wjO-MK2CtqfCB-lP6r9K223GpmnukVJLc_5bMfXi4FCWHiey6VdSxdGkWc7zz7lrwyRNk8-ICXxocrxt0TOkt7DKEMcjvi0tSjrc_TG8M8F6pukbqWA0PqLefBJk9V61OY7JgsSatkA-wrQzEMdwASuLtK7TsPf8hv3RW13nMr9CPLyTO92Hb8TWqRo3j1CMzEoBpxraLD5nlb0DUoLelkJcrT3oEV7v9-ndfZT9OlGxas7dc_4pj92qIx0dpHcgklKr_2TiyEHoP3LcQeHbGDbINaCNI-rPWzZwmgOaDD4SBGfK-AJhCjoYuzuycU_RVHvKDwQG8ETUOgFHNfc4j5gqJ8Blwjt3x4GIYGgKjZqm4hkyUNp-ggT44LNX-3w2vwnSu2GMiVfbyhQTxVO9Zh1KZcjro23-Uz_woA95Ei8Vtqpsx9qa2Hdfz1NQ9g-T1gChDFAxM8enSl_VULeUyEqs9otXxOF5Ej52gSvpQHDFsUkoFpwJcN0N-umHHpmFkYLIdpE6HwowZMNo83-GadAdrH5P9ar-oLgS4zzc43m9eXyPhfxWQfVecaMEAifio46xKRo90rYo0W4QuH9FbcyCzjuuLsCCunK_be5E88PPYZnqQLn96o0fVcFOXfjef_DO3dbwp_aCns_lsLSTzZWJ2zGduuI64AmWwLJtReVqAiUHVlc08OQtbfDPwDmahXibSxWiYDAGsVnoM_YU4C01Otc3_eQ6_2hu7lVln4NpLv6Z7Pz4YA078EDjtEcxLwaV6heGf1_m_ZOVv3rq4oO7LCbZxXFb-FxJuSC0bew18S2jBQwTKJMu6ePUWqpnSTqcVOv0N7-tS6L5gI8SQFK6NC8zJdMFDx2cYjVNcvkTkiIu3oUDfN1A7c13eFvnKQ2Wq8bHq9rcgBe-005RyxEHgIyYMzYx9LcnFgVhnSi0v3TXqA65fsLn265yr_YsiYRfeSFX5xAgfZvQiPhJEnecwCCkY-bWqwlMy_J4qZC7YmIzNwEbDYaF-JMl0M42eEZ64ZflOJ9_ZdnAWbx8U95ejdo1_n2riNHBF_OPiPk9xIriyTawZ5RWuUElf2jB8KgwFk7lAR9wCpeW8YrH2S4sGRYwgn5ro_F5zsg0GrU94AkUky_6dZ9W-fY-mA2FtZrysvL0JNq7hjdj9loc_OXorE8K2RHu7UF50oBn7fTmcBlOlf_T7exdkYif0Yz3xROaCsxCsRNLr0ax_wRDq8_kKmXCosJwDwUvkug01obM-tOtPxSiuSnC9fh8yqgkvo1cg1dDmBRzQspjETwNR5NUzYSPEBK_Fs8DR_PQBBlyLD4ajG4SL\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}{{PREFIX}}/token/login",
+							"host": [
+								"{{HOSTNAME}}{{PREFIX}}"
+							],
+							"path": [
+								"token",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Extract JWT token from cookies\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{AUTHPASSWORD}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{AUTHUSERNAME}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept-language",
+								"value": "{{LANGUAGE}}",
+								"type": "text"
+							},
+							{
+								"key": "x-platform",
+								"value": "{{PLATFORM}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOSTNAME}}{{PREFIX}}/token/extend/cookie",
+							"host": [
+								"{{HOSTNAME}}{{PREFIX}}"
+							],
+							"path": [
+								"token",
+								"extend",
+								"cookie"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

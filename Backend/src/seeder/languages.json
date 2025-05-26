@@ -1,0 +1,46 @@
+[
+  {
+    "table": "language",
+    "schema": {
+      "language_id": {
+        "type": "increments",
+        "primary": true
+      },
+      "name": {
+        "type": "string",
+        "length": 50,
+        "notNullable": true
+      },
+      "code": {
+        "type": "string",
+        "length": 50,
+        "notNullable": true
+      },
+      "status": {
+        "type": "enum",
+        "values": [
+          "ACTIVE",
+          "INACTIVE"
+        ],
+        "notNullable": true
+      },
+      "created_at": {
+        "type": "timestamp",
+        "nullable": true
+
+      }
+    },
+    "data": [
+      {
+        "name": "Thailand",
+        "code": "TH",
+        "status": "ACTIVE"
+      },
+      {
+        "name": "English",
+        "code": "EN",
+        "status": "ACTIVE"
+      }
+    ]
+  }
+]

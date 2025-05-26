@@ -1,0 +1,1195 @@
+{
+  "group": "VALIDATE",
+  "responses": [
+    {
+      "name": "MISSING_REQUIRED_VALUES",
+      "code": "4000",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบค่าที่ต้องการ"
+        },
+        {
+          "language": "EN",
+          "description": "Missing required values."
+        }
+      ]
+    },
+    {
+      "name": "DECIMAL_OVER_LENGTH",
+      "code": "4001",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำนวนทศนิยมเกินกว่าที่กำหนด"
+        },
+        {
+          "language": "EN",
+          "description": "Decimal is over length."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_POSITIVE_NUMBER",
+      "code": "4002",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่าตัวเลข และต้องเป็นเลข บวกเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Required only number and positive number."
+        }
+      ]
+    },
+    {
+      "name": "NUMBER_NOT_EQUAL_TO_ZERO",
+      "code": "4003",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่าตัวเลขต้องไม่เท่ากับ 0"
+        },
+        {
+          "language": "EN",
+          "description": "Number should not equal to zero."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_EMAIL_FORMAT",
+      "code": "4004",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบอีเมลไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid Email format."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_DATE_FORMAT",
+      "code": "4005",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบวันที่ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid Date format."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_TIME_FORMAT",
+      "code": "4006",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบเวลาไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid Time format."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_DATE_TIME_FORMAT",
+      "code": "4007",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบวันที่และเวลาไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid Date and Time format."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_URL_FORMAT",
+      "code": "4008",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบ URL ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid URL format."
+        }
+      ]
+    },
+    {
+      "name": "CHARACTER_OVER_LENGTH",
+      "code": "4009",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำนวนตัวอักษรเกินกว่าที่กำหนด"
+        },
+        {
+          "language": "EN",
+          "description": "Characters must be lesser than the maximum length."
+        }
+      ]
+    },
+    {
+      "name": "CHARACTER_MINIMUM_LENGTH",
+      "code": "4010",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำนวนตัวอักษรต้องไม่ต่ำกว่าที่กำหนด"
+        },
+        {
+          "language": "EN",
+          "description": "Characters must be greater than the minimum length."
+        }
+      ]
+    },
+    {
+      "name": "SPECIAL_CHARACTER_NOT_ALLOW",
+      "code": "4011",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่อนุญาตให้ใช้ตัวอักษรพิเศษ"
+        },
+        {
+          "language": "EN",
+          "description": "Special characters are not allowed."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_NUMBER",
+      "code": "4012",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวเลขเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only number is allowed."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_DECIMAL",
+      "code": "4013",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นทศนิยมเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only decimal is allowed."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_STRING",
+      "code": "4014",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวอักษรเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only character is allowed."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_STRING_AND_NUMBER",
+      "code": "4015",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวอักษรและตัวเลขเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only character and number are allowed."
+        }
+      ]
+    },
+    {
+      "name": "FILE_EXTENSION_NOT_ALLOW",
+      "code": "4016",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ประเภทของไฟล์ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Image extension is not allowed."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_FILE_NAME",
+      "code": "4017",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ชื่อไฟล์ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid file name."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_VALUES",
+      "code": "4018",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่าที่ระบุไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid values."
+        }
+      ]
+    },
+    {
+      "name": "CONFIRM_PASSWORD_NOT_MATCH",
+      "code": "4019",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รหัสผ่าน และยืนยันรหัสผ่าน ไม่ตรงกัน"
+        },
+        {
+          "language": "EN",
+          "description": "Password does not match."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_CURRENT_PASSWORD",
+      "code": "4020",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รหัสผ่านเดิมไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid current password."
+        }
+      ]
+    },
+    {
+      "name": "MISSING_REQUIRED_FILES",
+      "code": "4021",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบไฟล์ที่ต้องการ"
+        },
+        {
+          "language": "EN",
+          "description": "Missing required files."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_ARRAY",
+      "code": "4022",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็น Array เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only array is allowed."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_TIME_LOOKUP",
+      "code": "4023",
+      "description": [
+        {
+          "language": "TH",
+          "description": "เวลาไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid time."
+        }
+      ]
+    },
+    {
+      "name": "CHARACTER_FIXED_LENGTH",
+      "code": "4024",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำนวนตัวอักษรต้องไม่เกินที่กำหนด"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid characters."
+        }
+      ]
+    },
+    {
+      "name": "CONFIRM_PIN_NOT_MATCH",
+      "code": "4025",
+      "description": [
+        {
+          "language": "TH",
+          "description": "พิน และยืนยันพิน ไม่ตรงกัน"
+        },
+        {
+          "language": "EN",
+          "description": "PIN does not match."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_CURRENT_PIN",
+      "code": "4026",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รหัสผ่านพินเดิมไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid current pin."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_OBJECT",
+      "code": "4027",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็น Object เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only object is allowed."
+        }
+      ]
+    },
+    {
+      "name": "ONLY_URL_VALUES",
+      "code": "5109",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบ URL ผิด"
+        },
+        {
+          "language": "EN",
+          "description": "Data is not url type."
+        }
+      ]
+    },
+    {
+      "name": "FIREBASE_TOKEN_IS_NOT_VALID",
+      "code": "5110",
+      "description": [
+        {
+          "language": "TH",
+          "description": "Firebase token ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Firebase token is not valid."
+        }
+      ]
+    },
+    {
+      "name": "CURRENCY_NOT_FOUND",
+      "code": "5111",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบเหรียญ"
+        },
+        {
+          "language": "EN",
+          "description": "Currency not found."
+        }
+      ]
+    },
+    {
+      "name": "EMAIL_IS_UNAVAILABLE",
+      "code": "5112",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่สามารถใช้อีเมลนี้ได้"
+        },
+        {
+          "language": "EN",
+          "description": "This email is unavailable."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_PIN_CODE",
+      "code": "5113",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รหัสพินไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid pin code."
+        }
+      ]
+    },
+    {
+      "name": "MANY_REQUEST_VERIFY",
+      "code": "5114",
+      "description": [
+        {
+          "language": "TH",
+          "description": "เรียกใช้มากเกินไป"
+        },
+        {
+          "language": "EN",
+          "description": "Too many request."
+        }
+      ]
+    },
+    {
+      "name": "MISSING_ADMIN_KEY_VALUES",
+      "code": "4028",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบค่าที่ต้องการ"
+        },
+        {
+          "language": "EN",
+          "description": "Missing admin key values."
+        }
+      ]
+    },
+    {
+      "name": "SALT_KEY_VALUES",
+      "code": "4029",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ผลการตรวจสอบไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Salt Key is not true."
+        }
+      ]
+    },
+    {
+      "name": "AVOID_CURRENT_PASSWORD_SAME_NEWPASSWORD",
+      "code": "4030",
+      "description": [
+        {
+          "language": "TH",
+          "description": "หลีกเลี่ยงการเปลี่ยนรหัสผ่านที่เป็นรหัสผ่านเดิม"
+        },
+        {
+          "language": "EN",
+          "description": "Please avoid newpassword duplicate old password."
+        }
+      ]
+    },
+    {
+      "name": "PLEASE_INCREASE_SECURITY_PASSWORD",
+      "code": "4031",
+      "description": [
+        {
+          "language": "TH",
+          "description": "โปรดเพิ่มความปลอดภัยให้กับรหัสผ่านของคุณ"
+        },
+        {
+          "language": "EN",
+          "description": "Please increase the security of your password."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_CITIZEN_FORMAT",
+      "code": "4032",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบบัตรประชาชนไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "Invalid Citizen format."
+        }
+      ]
+    },
+    {
+      "name": "DUPICATE_VALUE",
+      "code": "4033",
+      "description": [
+        {
+          "language": "TH",
+          "description": "มีค่าซ้ำ"
+        },
+        {
+          "language": "EN",
+          "description": "Dupicate Value."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_STRING_TH",
+      "code": "4034",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวอักษรไทยเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only character thai is allowed."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_STRING_EN",
+      "code": "4034",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวอักษรอังกฤษเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Only character english is allowed."
+        }
+      ]
+    },
+    {
+      "name": "ALREADY_WAITING_VERIFY",
+      "code": "4034",
+      "description": [
+        {
+          "language": "TH",
+          "description": "KYC คุณยังอยู่ในการพิจารณาได้โปรดรอ"
+        },
+        {
+          "language": "EN",
+          "description": "Your Kyc Verify are still pending plese wait."
+        }
+      ]
+    },
+    {
+      "name": "ALREADY_SUCCESS_VERIFY",
+      "code": "4035",
+      "description": [
+        {
+          "language": "TH",
+          "description": "KYC คุณเรียบร้อยแล้ว ไม่สามารถร้องขอเพิ่มได้"
+        },
+        {
+          "language": "EN",
+          "description": "Your Kyc Verify already success."
+        }
+      ]
+    },
+    {
+      "name": "ALREADY_EMAIL",
+      "code": "4033",
+      "description": [
+        {
+          "language": "TH",
+          "description": "มีผู้ใช้ Email นี้แล้ว"
+        },
+        {
+          "language": "EN",
+          "description": "This email already in use.."
+        }
+      ]
+    },
+    {
+      "name": "PLEASE_PROVIDE_YOUR_EMAIL",
+      "code": "4033",
+      "description": [
+        {
+          "language": "TH",
+          "description": "กรุณาใส่อีเมลของคุณ"
+        },
+        {
+          "language": "EN",
+          "description": "Please input your email."
+        }
+      ]
+    },
+    {
+      "name": "LIMIT_REQEST_CREATE_ACCOUNT",
+      "code": "4034",
+      "description": [
+        {
+          "language": "TH",
+          "description": "คุณไม่สามารถดำเนินการ ร้องขอ OTP ได้อีกโปรดลองอีกทีภายหลัง"
+        },
+        {
+          "language": "EN",
+          "description": "You cant request OTP plese try again later."
+        }
+      ]
+    },
+    {
+      "name": "YOU_ARE_ALREADY_SUCCESS",
+      "code": "4035",
+      "description": [
+        {
+          "language": "TH",
+          "description": "คุณผ่านการยืนยัน OTP แล้ว กำลังข้าม"
+        },
+        {
+          "language": "EN",
+          "description": "Your Already Success Skiping."
+        }
+      ]
+    },
+    {
+      "name": "ALREADY_PHONENUMBER",
+      "code": "4036",
+      "description": [
+        {
+          "language": "TH",
+          "description": "มีผู้ใช้ เบอร์ นี้แล้ว"
+        },
+        {
+          "language": "EN",
+          "description": "Already have Phoenumber."
+        }
+      ]
+    },
+    {
+      "name": "WRONG_CONNECTING_SYSTEMS",
+      "code": "4036",
+      "description": [
+        {
+          "language": "TH",
+          "description": "เกิดความผิดพลาดเนื่องจากความไม่ต่อเนื่อง โปรดลองใหม่อีกครั้ง"
+        },
+        {
+          "language": "EN",
+          "description": "wrong because connecting system are wrong plese try again later."
+        }
+      ]
+    },
+    {
+      "name": "WANT_ONLYONE_DATA",
+      "code": "4037",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องการเพียงแค่ หนึ่งในสองค่าเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Just Want Only one Data."
+        }
+      ]
+    },
+    {
+      "name": "PASSWORDS_DO_NOT_MATCH",
+      "code": "4038",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password ไม่ตรงกัน"
+        },
+        {
+          "language": "EN",
+          "description": "password dont match."
+        }
+      ]
+    },
+    {
+      "name": "WRONG_YOU_DATA",
+      "code": "4039",
+      "description": [
+        {
+          "language": "TH",
+          "description": "คุณระบุค่าผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "wrong data."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_MAC_ADDRESS_FORMAT",
+      "code": "4040",
+      "description": [
+        {
+          "language": "TH",
+          "description": "รูปแบบ mac address ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "mac address format are wrong."
+        }
+      ]
+    },
+    {
+      "name": "DONT_FOUND_ADMIN",
+      "code": "4041",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบ admin"
+        },
+        {
+          "language": "EN",
+          "description": "Dont Found admin"
+        }
+      ]
+    },
+    {
+      "name": "DONT_MATCH_UPDATE_DATA",
+      "code": "4042",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน insert ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "data in insert wrong"
+        }
+      ]
+    },
+    {
+      "name": "DUPLICATE_MERCHANT_AND_BRANCH_NOT_ALLOWED",
+      "code": "4043",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน update ห้ามซ้ำ"
+        },
+        {
+          "language": "EN",
+          "description": "data in update are dupicate"
+        }
+      ]
+    },
+    {
+      "name": "DONT_FOUND_PASSWORD_POLICY",
+      "code": "4044",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่พบ password policy ."
+        },
+        {
+          "language": "EN",
+          "description": "dont found password policy"
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_MINIMUM_REQUEST",
+      "code": "4045",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่ผ่านขั้นต่ำของ password policy ขั้นต่ำ ที่กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "dont pass minimum password policy minimum"
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_MAXIMUM_REQUEST",
+      "code": "4046",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password ไม่สามารถเกิน policy ที่กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "password request dont over on policy maxmimum"
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_LOWERCASE_LESS",
+      "code": "4047",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password จำเป็นต้องมี ขั้นต่ำ ของตัวอักษรพิมเล็ก ตามที่ policy กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "password require minimum lowercase character on policy"
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_UPPERCASE_LESS",
+      "code": "4048",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password จำเป็นต้องมี ขั้นต่ำ ของตัวอักษรพิมใหญ่ ตามที่ policy กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "password require minimum uppercase character on policy."
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_ENGLISH_LESS",
+      "code": "4049",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ตามที่ policy กำหนดไว้ ตัวอักษรของ password ต้องเป็นอักษรภาษาอังกฤษเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "base on policy character in password require only englist character."
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_NUMBER_LESS",
+      "code": "4050",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password จำเป็นต้องมี ขั้นต่ำ ของตัวเลข ตามที่ policy กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "password require number character on policy"
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_SPECIAL_LESS",
+      "code": "4051",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password จำเป็นต้องมี ขั้นต่ำ ของตัวอักษรพิเศษ ตามที่ policy กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "password require minimum special character on policy."
+        }
+      ]
+    },
+    {
+      "name": "ARRAY_SHOULD_HAVE_DATA",
+      "code": "4052",
+      "description": [
+        {
+          "language": "TH",
+          "description": "Array จำเป๋นต้องมีค่า เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "array should have data."
+        }
+      ]
+    },
+    {
+      "name": "ONLY_TWO_DECIMAL_PLACES_ALLOWED",
+      "code": "4053",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำกัดเลขทศนิยมไม่เกิน 2 ตำแหน่ง"
+        },
+        {
+          "language": "EN",
+          "description": "fix decimal number not over 2 lenth."
+        }
+      ]
+    },
+    {
+      "name": "ONLY_NUMERIC_STRING_WITH_TWO_DECIMALS_ALLOWED",
+      "code": "4054",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำกัดเป็น ตัว string number และ ทศนิยมไม่เกิน 2 ตำแหน่ง"
+        },
+        {
+          "language": "EN",
+          "description": "fix decimal string number not over 2 lenth."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_CURRENCY",
+      "code": "4055",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่า cur ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "value cur invalid."
+        }
+      ]
+    },
+    {
+      "name": "EXCEEDS_MAXIMUM_LIMIT",
+      "code": "4056",
+      "description": [
+        {
+          "language": "TH",
+          "description": "Amount เกินขีดจำกัดสูงสุดของระบบ "
+        },
+        {
+          "language": "EN",
+          "description": "Amount exceeds maximum limit."
+        }
+      ]
+    },
+    {
+      "name": "INVALID_VALUE",
+      "code": "4057",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่าบางอย่าง ไม่ถูกต้อง"
+        },
+        {
+          "language": "EN",
+          "description": "some value invalid."
+        }
+      ]
+    },
+    {
+      "name": "CHARACTER_DONT_MATCH",
+      "code": "4058",
+      "description": [
+        {
+          "language": "TH",
+          "description": "จำนวนตัวอักษรไม่ตรงกับที่กำหนดไว้"
+        },
+        {
+          "language": "EN",
+          "description": "Characters dont match."
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_POSITIVE_NUMBER_ACCEPT_DECIMAL",
+      "code": "4059",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ค่าตัวเลข และต้องเป็นเลข บวก และไม่ใช่เลขทศนิยม เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Required only number and positive and decimal  number."
+        }
+      ]
+    },
+    {
+      "name": "ERROR_RECAPTCHA",
+      "code": "4060",
+      "description": [
+        {
+          "language": "TH",
+          "description": "Recaptcha ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "Recaptcha Invalids."
+        }
+      ]
+    },
+    {
+      "name": "MUST_BE_INTEGER",
+      "code": "4061",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ต้องเป็นตัวเลขเท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "Permit only integer."
+        }
+      ]
+    },
+    {
+      "name": "DONT_MATCH_UPDATE_DATA_AFFILIATION",
+      "code": "4063",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน Update ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "data in Update wrong"
+        }
+      ]
+    },
+    {
+      "name": "REQUIRED_ONLY_POSITIVE_INTEGER",
+      "code": "4064",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลจำเป็นต้อง เป็นตัวเลข บวก เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "data require positive number  only."
+        }
+      ]
+    },
+    {
+      "name": "ONLY_INTEGER_ALLOWED",
+      "code": "4065",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลจำเป็นต้อง เป็นตัวเลข เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "data require number only."
+        }
+      ]
+    },
+    {
+      "name": "ONLY_NUMERIC_STRING_INTEGER_ALLOWED",
+      "code": "4066",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลจำเป็นต้อง เป็นตัว string และเป็น เลข เท่านั้น"
+        },
+        {
+          "language": "EN",
+          "description": "data require string number only."
+        }
+      ]
+    },
+    {
+      "name": "DONT_MATCH_DELETE_DATA_AFFILIATION",
+      "code": "4067",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน Delete ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "data in Delete wrong"
+        }
+      ]
+    },
+    {
+      "name": "DUPICATE_AFFILIATION",
+      "code": "4068",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน affiliation ซ้ำ"
+        },
+        {
+          "language": "EN",
+          "description": "data in affiliation are dupicate"
+        }
+      ]
+    },
+    {
+      "name": "DONT_MATCH_INSERT_DATA_AFFILIATION",
+      "code": "4069",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ข้อมูลใน Insert ผิดพลาด"
+        },
+        {
+          "language": "EN",
+          "description": "data in Insert wrong"
+        }
+      ]
+    },
+    {
+      "name": "NO_LEADING_SPACES",
+      "code": "4070",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ไม่อนุญาตให้มีช่องว่างข้างหน้า"
+        },
+        {
+          "language": "EN",
+          "description": "No leading spaces."
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_SPECIAL_INVALID",
+      "code": "4071",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ตัวอักษรพิเศษใน password ไม่ถูกต้อง ตาม policy"
+        },
+        {
+          "language": "EN",
+          "description": "password special character invalid on policy."
+        }
+      ]
+    },
+    {
+      "name": "PASSWORD_SIMILARITY_RULE",
+      "code": "4072",
+      "description": [
+        {
+          "language": "TH",
+          "description": "password ไม่ถูกต้อง ตาม policy หัวเรื่อง กฏ similarity"
+        },
+        {
+          "language": "EN",
+          "description": "password invalid on policy similarity rule."
+        }
+      ]
+    }
+  ]
+}

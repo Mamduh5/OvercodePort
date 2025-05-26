@@ -1,0 +1,54 @@
+[
+    {
+        "table": "auth_login_logs",
+        "schema": {
+            "auth_logs_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id": {
+                "type": "integer",
+                "notNullable": false
+            },
+            "email": {
+                "type": "string",
+                "length": 50,
+                "notNullable": false
+            },
+            "timestamp": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            },
+            "action": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "reason_of_failure": {
+                "type": "string",
+                "length": 50,
+                "notNullable": false
+            },
+            "failed_attempt_count": {
+                "type": "integer",
+                "notNullable": false
+            },
+            "request_from_portal": {
+                "type": "integer",
+                "comment": "1 = CENTER , 2 = MERCHANT",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'CENTER' WHEN ${column2} = 2 THEN 'MERCHANT' ELSE 'UNKNOWN' END AS topic_of_request ",
+                "notNullable": true
+            },
+            "ip_address": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "user_agent": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            }
+        }
+    }
+]

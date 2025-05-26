@@ -1,0 +1,44 @@
+[
+    {
+        "table": "admin_data_tracking",
+        "schema": {
+            "admin_data_tracking_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": true
+            },
+            "first_name": {
+                "type": "string",
+                "length": 50,
+                "notNullable": false
+            },
+            "last_name": {
+                "type": "string",
+                "length": 50,
+                "notNullable": false
+            },
+            "type_of_data": {
+                "type": "integer",
+                "comment": "1 = OLD, 2 = NEW",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'OLD' WHEN ${column2} = 2 THEN 'NEW' ELSE 'UNKNOWN' END AS is_active",
+                "notNullable": true
+            }
+        },
+        "data": [
+            {
+              "first_name": "Mster Yi",
+              "last_name": "Grand Mater",
+              "admin_id": 1,
+              "type_of_data": 2,
+              "status": 102
+            }
+          ]
+    }
+]

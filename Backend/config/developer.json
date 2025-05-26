@@ -1,0 +1,137 @@
+{
+  "server": {
+    "host": "develop",
+    "port": 7001
+  },
+  "bodyParser": {
+    "multipart": true,
+    "jsonLimit": "2mb",
+    "formLimit": "2mb"
+  },
+  "rateLimit": {
+    "driver": "memory",
+    "duration": 60000,
+    "maxIps": 150
+  },
+  "basicAuth": {
+    "username": "Xr@7Lp#Nz2Qf^MaVi*TcBdYwKe",
+    "password": "mZ#7Lt!Yq@Vx2Np^FgRs*Bw9KU&eToChMiD"
+  },
+  "jwt": {
+    "hash": "qfZus2!Zj2XIHbrjGj+WNhd9L@+vlocalhost_base3_setup@2023",
+    "tempHash": "as8d7adw5qe2qe!fstemp_secret_@base5msetup_2025v1",
+    "algorithm": "HS256",
+    "options": {
+      "expiresIn": "15m"
+    },
+    "optionsMobile": {
+      "expiresIn": "15m"
+    },
+    "tempOptions": {
+      "expiresIn": "5m"
+    }
+  },
+  "cookie": {
+    "resetTime": {
+      "minute": 15,
+      "multiplierSecond": 60,
+      "multiplierMilisecond": 1000
+    },
+    "extendTime": {
+      "minute": 5,
+      "multiplierSecond": 60,
+      "multiplierMilisecond": 1000
+    }
+  },
+  "email": {
+    "token": "",
+    "endpoint": "https://send.api.mailtrap.io/",
+    "sender_email": "mailtrap@diagnosisthailand.com"
+  },
+  "tokenLogin": {
+    "hash": "",
+    "url": "",
+    "basicUser": "",
+    "basicPass": ""
+  },
+  "serviceImage": {
+    "host": "210.246.202.236",
+    "port": 22,
+    "username": "sdevelop",
+    "password": "d!112233D",
+    "path": "/var/www/html/upload/image_issue_project"
+  },
+  "redis": {
+    "url": "",
+    "host": "210.246.202.16",
+    "port": 6380,
+    "password": "CYm8kz22KmAmwE"
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": "3306",
+    "username": "root",
+    "password": "",
+    "database": "test",
+    "queryConnect": ""
+  },
+  "databasePosgresql": {
+    "host": "127.0.0.1",
+    "port": "3306",
+    "username": "root",
+    "password": "",
+    "database": "test"
+  },
+  "databaseknexsql": {
+    "host": "210.246.202.16",
+    "port": "3306",
+    "username": "test-dev",
+    "password": "AKq4RXjvYYk9bK",
+    "database": "test_dev"
+  },
+  "google": {
+    "projectId": "",
+    "keyFilename": "",
+    "storage": {
+      "host": "",
+      "bucket": "",
+      "path_image": "",
+      "path_document": "",
+      "location": "",
+      "regional": true
+    }
+  },
+  "_filterFile": {
+    "image_type": [
+      "jpg",
+      "JPG",
+      "jpeg",
+      "JPEG",
+      "gif",
+      "png",
+      "webp",
+      "pdf"
+    ]
+  },
+  "SenderEmail": {
+    "email": "'Jumppy Bird Game' <mamduh2542@gmail.com>",
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "user": "mamduh2542@gmail.com",
+    "pass": "rvaj xlef plhp tnia"
+  },
+  "ResetPasswordURL": {
+    "host": "http://localhost:5173/reset-password"
+  },
+  "VerifyEmailURL": {
+    "host": "http://localhost:5173/postItem"
+  },
+  "VerifyEnable2FAURL": {
+    "host": "http://localhost:5173/postItem"
+  },
+  "reCAPTCHA": {
+    "VerifyURL": "https://www.google.com/recaptcha/api/siteverify",
+    "SiteKey": "6Lfwb_sqAAAAAF49UEjpM0TPwwl62ylPIwwvWren",
+    "PrivatKey": "6Lfwb_sqAAAAAPSpgj_0J06B9PHDHMobgKGSE7mi"
+  }
+}

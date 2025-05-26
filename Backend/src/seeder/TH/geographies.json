@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "country_id": "TH",
+    "name_th": "ภาคเหนือ",
+    "name_en": "North"
+  },
+  {
+    "id": 2,
+    "country_id": "TH",
+    "name_th": "ภาคกลาง",
+    "name_en": "Central"
+  },
+  {
+    "id": 3,
+    "country_id": "TH",
+    "name_th": "ภาคตะวันออกเฉียงเหนือ",
+    "name_en": "North Eas"
+  },
+  {
+    "id": 4,
+    "country_id": "TH",
+    "name_th": "ภาคตะวันตก",
+    "name_en": "West"
+  },
+  {
+    "id": 5,
+    "country_id": "TH",
+    "name_th": "ภาคตะวันออก",
+    "name_en": "East"
+  },
+  {
+    "id": 6,
+    "country_id": "TH",
+    "name_th": "ภาคใต้",
+    "name_en": "South"
+  }
+]

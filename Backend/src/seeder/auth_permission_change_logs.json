@@ -1,0 +1,62 @@
+[
+    {
+        "table": "auth_permission_change_logs",
+        "schema": {
+            "auth_permission_change_logs_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "admin_id_in_action": {
+                "type": "integer",
+                "references": {
+                    "table": "admins",
+                    "column": "admin_id"
+                },
+                "notNullable": true
+            },
+            "target_permission_id": {
+                "type": "integer",
+                "references": {
+                    "table": "permission_detail_new",
+                    "column": "permission_detail_id"
+                },
+                "notNullable": true
+            },
+            "timestamp": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            },
+            "action_type": {
+                "type": "integer",
+                "comment": "1 = CREATE, 2 = UPDATE, 3 = DELETE",
+                "querystring": "CASE WHEN ${column1} = 1 THEN 'CREATE' WHEN ${column2} = 2 THEN 'UPDATE' WHEN ${column2} = 3 THEN 'DELETE' ELSE 'UNKNOWN' END AS is_active",
+                "notNullable": true
+            },
+            "old_data_id": {
+                "type": "integer",
+                "notNullable": false
+            },
+            "new_data_id": {
+                "type": "integer",
+                "notNullable": false
+            },
+            "connection_status": {
+                "type": "integer",
+                "comment": "0 = ON, 1 = OFF",
+                "querystring": "CASE WHEN ${column1} = 0 THEN 'ON' WHEN ${column2} = 1 THEN 'OFF' ELSE 'UNKNOWN' END AS connection_status",
+                "notNullable": false
+            },
+            "ip_address": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "user_agent": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            }
+
+        }
+    }
+]

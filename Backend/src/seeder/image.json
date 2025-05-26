@@ -1,0 +1,62 @@
+[
+    {
+        "table": "image",
+        "schema": {
+            "image_id": {
+                "type": "increments",
+                "primary": true
+            },
+            "image_group": {
+                "type": "string",
+                "length": 50,
+                "notNullable": true
+            },
+            "image_name": {
+                "type": "string",
+                "length": 255,
+                "notNullable": true
+            },
+            "company_id": {
+                "type": "integer",
+                "references": {
+                    "table": "company",
+                    "column": "company_id"
+                },
+                "notNullable": true
+            },
+            "project_id": {
+                "type": "integer",
+                "references": {
+                    "table": "project",
+                    "column": "project_id"
+                },
+                "notNullable": true
+            },
+            "user_id": {
+                "type": "integer",
+                "references": {
+                    "table": "users",
+                    "column": "user_id"
+                },
+                "notNullable": true
+            },
+            "status": {
+                "type": "enum",
+                "values": [
+                    "ACTIVE",
+                    "INACTIVE"
+                ],
+                "notNullable": true
+            },
+            "created_at": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            },
+            "updated_at": {
+                "type": "timestamp",
+                "defaultTo": "now"
+            }
+        },
+        "data": []
+    }
+]

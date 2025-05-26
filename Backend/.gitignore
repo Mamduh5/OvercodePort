@@ -1,0 +1,9 @@
+package-lock.json
+node_modules/
+logs/
+.DS_Store
+newrelic_agent.log
+.clinic
+node_*.log
+.history/
+.env

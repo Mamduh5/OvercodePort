@@ -1,0 +1,29 @@
+[
+    {
+      "RequestLimit":{
+        "Unit":"day",
+        "DefaultUnit":["minute","hour","week","day","month","year"],
+        "Data":"5"
+      },
+      "ExpireRequest":{
+        "Unit":"minute",
+        "DefaultUnit":["minute","hour","week","day","month","year"],
+        "Data":"5"
+      },
+      "TypeRequest":"EMAIL"
+    },
+    {
+      "RequestLimit":{
+        "Unit":"day",
+        "DefaultUnit":["minute","hour","week","day","month","year"],
+        "Data":"20"
+      },
+      "ExpireRequest":{
+        "Unit":"minute",
+        "DefaultUnit":["minute","hour","week","day","month","year"],
+        "Data":"10"
+      },
+      "TypeRequest":"PHONE"
+    }
+  ]
+  
