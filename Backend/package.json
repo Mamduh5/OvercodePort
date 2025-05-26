@@ -4,19 +4,13 @@
   "description": "Base_node_backend",
   "main": "index.js",
   "scripts": {
-    "test_localhost": "dotenv -e .env.test_localhost -- npm run jest",
-    "test:all": "jest --coverage",
-    "test:api": "jest test/integration",
-    "test:middleware": "jest test/unit",
     "jest": "jest",
     "start": "nodemon --max_old_space_size=4096 src/app.js",
-    "localhost": "dotenv -e .env.localhost -- npm start",
-    "developer": "dotenv -e .env.uat npm -- start",
+    "localhost": "dotenv -e .env.localhost npm -- start",
+    "developer": "dotenv -e .env.developer npm -- start",
     "uat": "dotenv -e .env.uat npm -- start",
     "preprod": "dotenv -e .env.preprod npm -- start",
-    "production": "dotenv -e .env.production npm -- start",
-    "localhost-DevServer": "dotenv -e .env.developer -- npm start",
-    "localhost-preprod": "dotenv -e .env.preprod -- npm start"
+    "production": "dotenv -e .env.production npm -- start"
   },
   "keywords": [
     "base3",
@@ -63,7 +57,6 @@
     "moment-timezone": "^0.5.47",
     "mysql2": "^3.12.0",
     "netmask": "^2.0.1",
-    "newrelic": "^9.15.0",
     "node-cmd": "^5.0.0",
     "node-fetch": "^2.6.7",
     "node-schedule": "^2.1.0",

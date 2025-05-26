@@ -1,4 +1,5 @@
-FROM public.ecr.aws/docker/library/node:20.11.1-alpine3.19
+# FROM public.ecr.aws/docker/library/node:20.11.1-alpine3.19
+FROM public.ecr.aws/docker/library/node:20.11.1-buster-slim
 WORKDIR /app
 COPY package*.json ./
 RUN npm install --force
@@ -8,4 +9,4 @@ RUN npm i -g nodemon
 # RUN npm install -g pm2
 COPY . .
 EXPOSE 7001
-CMD ["npm", "run", "uat"]
+CMD ["npm", "run", "localhost"]

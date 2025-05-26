@@ -75,19 +75,12 @@
     "database": "test",
     "queryConnect": ""
   },
-  "databasePosgresql": {
-    "host": "127.0.0.1",
-    "port": "3306",
-    "username": "root",
-    "password": "",
-    "database": "test"
-  },
   "databaseknexsql": {
     "host": "210.246.202.16",
     "port": "3306",
-    "username": "test-dev",
+    "username": "overcode-dev",
     "password": "AKq4RXjvYYk9bK",
-    "database": "test_dev"
+    "database": "overcode_dev"
   },
   "google": {
     "projectId": "",

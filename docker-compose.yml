@@ -1,0 +1,65 @@
+# version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: api-overcodeport
+    expose:
+      - "7001"
+    networks:
+      - overcode_net
+    depends_on:
+      - mysql
+      
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment: 
+      MYSQL_DATABASE: overcodeport    
+      # MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - overcode_net
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - overcode_net
+  # frontend:
+  #   build:
+  #     context: ./Frontend
+  #     dockerfile: Dockerfile
+  #   container_name: overcodeport
+  #   run: npm run build
+  #   networks:
+  #     - overcode_net
+
+  nginx:
+    build:
+      context: /nginx
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      # - frontend
+    networks:
+      - overcode_net
+volumes:
+  mysql_data:
+  redis_data:
+networks:
+  overcode_net:
