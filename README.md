@@ -18,7 +18,8 @@ npm run localhost
 
 ## Docker setup
 
-Build all image
+### Build all image
+
 ```sh
 docker-compose up --build
 ```
