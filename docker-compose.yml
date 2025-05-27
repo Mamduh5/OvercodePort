@@ -12,6 +12,7 @@ services:
       - overcode_net
     depends_on:
       - mysql
+      - redis
       
   mysql:
     image: mysql:8.0
@@ -38,6 +39,7 @@ services:
       - redis_data:/data
     networks:
       - overcode_net
+
   # frontend:
   #   build:
   #     context: ./Frontend
