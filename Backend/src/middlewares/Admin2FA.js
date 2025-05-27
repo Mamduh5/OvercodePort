@@ -5,7 +5,7 @@ const { ADMINS, REQUEST_SENDING_EMAIL, ADMIN_2FA_REQUEST } = require('../enum/in
 const { responseFormat } = require('../libs/formatResponse.js');
 const { requestOtpEmailHTML, requestEnable2FAEmailHTML } = require('../email/emailSendertext.js');
 const crypto = require('crypto');
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const { throwError } = require('../libs/errorService.js');
 
 const admin2FAStatus = () => async (ctx, next) => {
@@ -60,7 +60,7 @@ const requestEnable2FA = () => async (ctx, next) => {
     const Email = adminsData.email;
     const resetToken = crypto.randomBytes(32).toString('hex');
     const resetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
-    const resetTokenExpiry = moment.utc().add(1, 'hour').format("YYYY-MM-DD HH:mm:ss");
+    const resetTokenExpiry = DateTime.utc().plus({ hours: 1 }).toFormat('yyyy-MM-dd HH:mm:ss');
 
     await knex(REQUEST_SENDING_EMAIL).update({
       status: 402
@@ -104,8 +104,8 @@ const confirmEnable2FA = () => async (ctx, next) => {
       .where({ admin_id: adminId, email: Email, reset_token: Token, topic_of_request: 3, status: 102 })
       .first();
 
-    const currentTime = moment.utc();
-    const resetTokenExpiry = moment.utc(requestData.reset_token_expiry_at);
+    const currentTime = DateTime.utc();
+    const resetTokenExpiry = DateTime.fromJSDate(requestData.reset_token_expiry_at).toUTC();
     if (currentTime.isAfter(resetTokenExpiry)) {
       ctx.body = responseFormat({}, 'RESET_TOKEN_EXPIRE', ctx.language);
       return;
@@ -114,7 +114,7 @@ const confirmEnable2FA = () => async (ctx, next) => {
       .where({ admin_id: adminId, email: Email })
       .update({
         is_2fa_active: 1,
-        updated_at: moment.utc(),
+        updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       });
     await knex(REQUEST_SENDING_EMAIL).where({
       admin_id: adminId,
@@ -135,7 +135,7 @@ const disable2FA = () => async (ctx, next) => {
       .where({ admin_id: adminId })
       .update({
         is_2fa_active: 0,
-        updated_at: moment.utc(),
+        updated_at: DateTime.utc().toFormat('yyyy-MM-dd HH:mm:ss'),
       });
 
     return next();
@@ -161,12 +161,13 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
     const ref_code = crypto.randomBytes(4).toString('hex').toUpperCase();
     const adminName = adminsData.first_name;
     const Email = adminsData.email;
-    const currentTime = moment.utc();
-    const otpExpiry = moment.utc().add(5, 'minute').format("YYYY-MM-DD HH:mm:ss");
+    const currentTime = DateTime.utc();
+    const otpExpiry = DateTime.utc().plus({ minutes: 5 }).toFormat('yyyy-MM-dd HH:mm:ss');
+    const threeMinutesAgo = currentTime.minus({ minutes: 3 }).toFormat('yyyy-MM-dd HH:mm:ss');
 
     const attemptSumxMin = await knex(ADMIN_2FA_REQUEST)
       .where({ admin_id: adminId, topic_of_request: 1, otp_code_status: 1, request_coming_from: 1 })
-      .andWhere('created_at', '>=', currentTime.clone().subtract(3, 'minutes').format('YYYY-MM-DD HH:mm:ss'))
+      .andWhere('created_at', '>=', threeMinutesAgo)
       .sum('attempt_count as total_attempts_xmin')
       .first();
 
@@ -179,7 +180,7 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
       .first();
 
     if (blockedEntry) {
-      const blockedTime = moment.utc(blockedEntry.created_at);
+      const blockedTime = DateTime.fromJSDate(blockedEntry.created_at).toUTC();
       if (currentTime.diff(blockedTime, 'minutes') < 30) {
         ctx.body = responseFormat({}, 'BLOCKED_30_MINUTES', ctx.language);
         return;
@@ -211,7 +212,7 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
       .first();
 
     if (latestOTP) {
-      const requestTime = moment.utc(latestOTP.created_at);
+      const requestTime = DateTime.fromJSDate(latestOTP.created_at).toUTC();
       const timeDiff = currentTime.diff(requestTime, 'seconds');
 
       const cooldownTimeOtp = 300;
@@ -290,9 +291,9 @@ const checkOtpExpiredEmail2FA = () => async (ctx, next) => {
     return next();
   }
 
-  const currentTime = moment.utc();
+  const currentTime = DateTime.utc();
 
-  const expiredOtps = otpData.filter(otp => moment(otp.expired_at).isBefore(currentTime));
+  const expiredOtps = otpData.filter(otp => DateTime.fromJSDate(otp.expired_at).toUTC() < currentTime);
 
   if (expiredOtps.some(otp => otp.otp_code_status === 3)) {
     ctx.body = responseFormat({}, 'OTP_EXPIRE', ctx.language);
@@ -338,7 +339,7 @@ const confirmOtpEmail2FA = () => async (ctx, next) => {
           attempt_count: 1,
           status: 402,
           request_coming_from: 1,
-          created_at: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+          created_at: DateTime.utc().toFormat('yyyy-MM-dd HH:mm:ss'),
         });
       } else {
         const newFailedCount = failedCount.verify_otp_failed_attempt_count + 1;
@@ -363,8 +364,8 @@ const confirmOtpEmail2FA = () => async (ctx, next) => {
       return;
     }
 
-    const currentTime = moment.utc();
-    const otpExpiry = moment.utc(otpData.expired_at);
+    const currentTime = DateTime.utc();
+    const otpExpiry = DateTime.fromJSDate(otpData.expired_at).toUTC();
     if (currentTime.isAfter(otpExpiry)) {
       await knex(ADMIN_2FA_REQUEST)
         .where({ admin_id: adminId, topic_of_request: 1, request_coming_from: 1 })

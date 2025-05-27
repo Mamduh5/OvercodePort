@@ -1,4 +1,5 @@
-const moment = require('moment');
+const { DateTime } = require('luxon')
+
 const redis = require('redis');
 const config = require('config')
 const appConfig = require('../../configLoader'); 
@@ -15,7 +16,7 @@ const client = redis.createClient({
 });
 
 client.on('error', function (err) {
-  console.log(moment.utc().format('YYYY-MM-DD HH:mm:ss') + ' UTC+00:00' + ' Redis error: ' + err);
+  console.log(DateTime.utc().toFormat('yyyy-MM-dd HH:mm:ss') + ' UTC+00:00' + ' Redis error: ' + err);
 });
 
 client.on('connect', function () {
