@@ -1,3 +1,4 @@
+const { DateTime } = require('luxon')
 const config = require('config')
 const basicAuth = require('basic-auth')
 const { responseFormat } = require('../libs/formatResponse.js')
@@ -21,7 +22,6 @@ const {
 const { getQueryDynamiCMD } = require('../../src/libs/knex.js')
 const { Argon2hashPassword, Argon2verifyPassword } = require('../libs/password.js')
 const { generateResetEmailHTML, generateEmailConfirmationHTML } = require('../email/emailSendertext.js');
-const moment = require('moment')
 const crypto = require('crypto');
 const { ExtendCookie } = require('../libs/cookie.js')
 const basicAuthentication = () => async (ctx, next) => {
@@ -281,6 +281,7 @@ const tokenAuthentication = () =>
 
 const changePassword = () => async (ctx, next) => {
   try {
+    const currentTime = DateTime.utc();
     const adminId = ctx.admin_id;
     const { OldPassword, NewPassword } = ctx.request.body || {};
     if (!adminId) {
@@ -310,7 +311,7 @@ const changePassword = () => async (ctx, next) => {
       .update({
         password_hash: newHashedPassword,
         refresh_token: newRefreshToken, // Optional
-        updated_at: moment.utc().toISOString(),
+        updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       });
 
     ctx.result = NewPassword;
@@ -335,14 +336,14 @@ const requestPasswordReset = () => async (ctx, next) => {
       ctx.body = responseFormat({}, 'SEND_LINK_IF_EMAIL_EXIST', ctx.language);
       return;
     }
-    const currentTime = moment.utc();
 
+    const currentTime = DateTime.utc();
     const adminId = admin.admin_id;
     const adminEmail = admin.email;
     const adminName = admin.first_name;
     const resetToken = crypto.randomBytes(32).toString('hex');
     const resetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
-    const resetTokenExpiry = moment.utc().add(1, 'hour').format("YYYY-MM-DD HH:mm:ss");
+    const resetTokenExpiry = DateTime.utc().plus({ hours: 1 }).toFormat('yyyy-MM-dd HH:mm:ss');
     
     await knex(REQUEST_SENDING_EMAIL).update({
       status: 402
@@ -357,8 +358,8 @@ const requestPasswordReset = () => async (ctx, next) => {
       email: Email,
       reset_token: resetTokenHash,
       reset_token_expiry_at: resetTokenExpiry,
-      created_at: currentTime.format('YYYY-MM-DD HH:mm:ss'),
-      updated_at: currentTime.format('YYYY-MM-DD HH:mm:ss'),
+      created_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
+      updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       status: 102,
     });
 
@@ -399,9 +400,9 @@ const resetPasswordFromEmail = () => async (ctx, next) => {
       ctx.body = responseFormat({}, 'INVALID_RESET_TOKEN', ctx.language);
       return;
     }
-    const currentTime = moment.utc(); // Current time in Bangkok
-    const resetTokenExpiry = moment.utc(resetToken.reset_token_expiry_at); // Expiry in Bangkok
-    if (currentTime.isAfter(resetTokenExpiry)) {
+    const currentTime = DateTime.utc();
+    const resetTokenExpiry = DateTime.fromJSDate(resetToken.reset_token_expiry_at).toUTC();
+    if (currentTime > resetTokenExpiry) {
       ctx.body = responseFormat({}, 'RESET_TOKEN_EXPIRED', ctx.language);
       return;
     }
@@ -420,7 +421,7 @@ const resetPasswordFromEmail = () => async (ctx, next) => {
       .update({
         password_hash: newHashedPassword,
         refresh_token: newRefreshToken, // Optional
-        updated_at: moment.utc().toISOString(),
+        updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       });
 
     // Delete the reset token from the database
@@ -457,13 +458,13 @@ const requestVerifyEmail = () => async (ctx, next) => {
       ctx.body = responseFormat({}, 'SEND_LINK_IF_EMAIL_EXIST', ctx.language);
       return;
     }
-    const currentTime = moment.utc();
+    const currentTime = DateTime.utc();
 
     const adminId = admin.admin_id;
     const adminName = admin.first_name;
     const resetToken = crypto.randomBytes(32).toString('hex');
     const resetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
-    const resetTokenExpiry = moment.utc().add(1, 'hour').format("YYYY-MM-DD HH:mm:ss");
+    const resetTokenExpiry = DateTime.utc().plus({ hours: 1 }).toFormat('yyyy-MM-dd HH:mm:ss');
 
     await knex(REQUEST_SENDING_EMAIL).where({
       admin_id: adminId, topic_of_request: 1
@@ -479,8 +480,8 @@ const requestVerifyEmail = () => async (ctx, next) => {
       email: Email,
       reset_token: resetTokenHash,
       reset_token_expiry_at: resetTokenExpiry,
-      created_at: currentTime.format('YYYY-MM-DD HH:mm:ss'),
-      updated_at: currentTime.format('YYYY-MM-DD HH:mm:ss'),
+      created_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
+      updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       status: 102,
     });
     const FrontendURL = config.get('VerifyEmailURL.host');
@@ -514,9 +515,9 @@ const verifyEmail = () => async (ctx, next) => {
       ctx.body = responseFormat({}, 'INVALID_RESET_TOKEN', ctx.language);
       return;
     }
-    const currentTime = moment.utc(); // Current time in Bangkok
-    const resetTokenExpiry = moment.utc(resetToken.reset_token_expiry_at); // Expiry in Bangkok
-    if (currentTime.isAfter(resetTokenExpiry)) {
+    const currentTime = DateTime.utc();
+    const resetTokenExpiry = DateTime.fromJSDate(resetToken.reset_token_expiry_at).toUTC();
+    if (currentTime > resetTokenExpiry) {
       ctx.body = responseFormat({}, 'EMAIL_VERIFY_LINK_EXPIRED', ctx.language);
       return;
     }
@@ -525,7 +526,7 @@ const verifyEmail = () => async (ctx, next) => {
       .update({
         email_verification: 1,
         is_2fa_active: 1,
-        updated_at: moment.utc().toISOString(),
+        updated_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss'),
       });
     await knex(REQUEST_SENDING_EMAIL).where({
       admin_id: adminId,

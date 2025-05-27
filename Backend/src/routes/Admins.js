@@ -112,8 +112,6 @@ Router.post('/reset/password',
 Router.patch('/verify/email',
   basicAuthentication(),
   xPlatformValidate(),
-  // tokenAuthentication(),
-  
   RequestResetAdminsValidate(),
   recaptchaValidate(),
   requestVerifyEmail(),

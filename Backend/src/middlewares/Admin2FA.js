@@ -114,7 +114,7 @@ const confirmEnable2FA = () => async (ctx, next) => {
       .where({ admin_id: adminId, email: Email })
       .update({
         is_2fa_active: 1,
-        updated_at: moment.utc().toISOString(),
+        updated_at: moment.utc(),
       });
     await knex(REQUEST_SENDING_EMAIL).where({
       admin_id: adminId,
@@ -135,7 +135,7 @@ const disable2FA = () => async (ctx, next) => {
       .where({ admin_id: adminId })
       .update({
         is_2fa_active: 0,
-        updated_at: moment.utc().toISOString(),
+        updated_at: moment.utc(),
       });
 
     return next();
