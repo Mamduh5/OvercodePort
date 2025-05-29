@@ -3,7 +3,7 @@
 services:
   backend:
     build:
-      context: ./Backend
+      context: ./backend
       dockerfile: Dockerfile
     container_name: api-overcodeport
     expose:
@@ -42,7 +42,7 @@ services:
 
   # frontend:
   #   build:
-  #     context: ./Frontend
+  #     context: ./frontend
   #     dockerfile: Dockerfile
   #   container_name: overcodeport
   #   run: npm run build
