@@ -197,7 +197,7 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
         topic_of_request: 1,
         attempt_count: 0,
         otp_code_status: 999,
-        created_at: currentTime.format('YYYY-MM-DD HH:mm:ss')
+        created_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss')
       });
 
       ctx.body = responseFormat({}, 'MANY_REQUEST_VERIFY', ctx.language);
@@ -241,7 +241,7 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
           otp_code: otp,
           status: 102,
           request_coming_from: 1,
-          created_at: currentTime.format('YYYY-MM-DD HH:mm:ss')
+          created_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss')
         });
       }
     } else {
@@ -256,13 +256,13 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
         otp_ref: ref_code,
         status: 102,
         request_coming_from: 1,
-        created_at: currentTime.format('YYYY-MM-DD HH:mm:ss')
+        created_at: currentTime.toFormat('yyyy-MM-dd HH:mm:ss')
       });
 
       ctx.remainingTime = 20;
     }
 
-    ctx.request_time = currentTime.format("YYYY-MM-DD HH:mm:ss");
+    ctx.request_time = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
     ctx.remainingTime = 20;
     ctx.otpRemainingTime = 300;
     ctx.ref_code = ref_code
