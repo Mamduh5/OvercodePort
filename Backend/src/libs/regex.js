@@ -1,4 +1,4 @@
-const moment = require('moment')
+const { DateTime } = require('luxon')
 
 const AssetRegexValidate = errors => {
   let error = errors || []
@@ -23,7 +23,7 @@ const AssetRegexValidateDateTime = errors => {
     if(typeof params == 'undefined'){
       return error[0] ? error : undefined
     }else{
-      if (!reg.test(data) || !moment.utc(data, moment.ISO_8601, true).isValid()) {
+      if (!reg.test(data) || !DateTime.fromISO(data, { zone: 'utc' }).isValid) {
         error.push({
           param: params,
           msg: message

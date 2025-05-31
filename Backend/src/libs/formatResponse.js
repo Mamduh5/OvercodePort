@@ -1,4 +1,5 @@
-const moment = require('moment')
+const { DateTime } = require('luxon')
+
 const { responsesNewSet, languages: [languagesRaw] } = require('../seeder/seeder.js')
 const { throwError } = require('../libs/errorService.js')
 
@@ -27,11 +28,11 @@ function responseFormat(data = {}, message = 'ERROR', languages = 'EN') {
 }
 
 function responseFormatError(data) {
-  return { res_code: '9999', res_type: 'error', res_message: 'ERROR', res_data: data, res_time: moment.utc().utcOffset('+07:00').unix() }
+  return { res_code: '9999', res_type: 'error', res_message: 'ERROR', res_data: data, res_time: DateTime.utc().toSeconds() }
 }
 
 function responseFormatSuccess(code, type, message, data) {
-  return { res_code: code, res_type: type, res_message: message, res_data: data, res_time: moment.utc().utcOffset('+07:00').unix() }
+  return { res_code: code, res_type: type, res_message: message, res_data: data, res_time: DateTime.utc().toSeconds() }
 }
 
 function responseFormatValidate(errors) {

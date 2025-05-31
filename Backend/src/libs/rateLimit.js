@@ -1,5 +1,5 @@
 const rateLimit = require('koa-ratelimit')
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const env = require('config')
 const { driver, duration, maxIps } = env.get('rateLimit')
 
@@ -14,7 +14,7 @@ function rateLimitFunction() {
       res_type: 'error',
       res_message: 'Too Many Requests.',
       res_data: {},
-      res_time: moment.utc().format()
+      res_time: DateTime.utc().toFormat('yyyy-MM-dd HH:mm:ss'),
     },
     id: ctx => ctx.ip,
     headers: {

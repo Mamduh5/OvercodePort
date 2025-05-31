@@ -10,7 +10,6 @@ const otpLogInSchema = require('./schemas/login/otpLoginValidateSchema.js')
 const UserUpdateInfoSchema = require('./schemas/admins/UpdateUserInfoValidateSchema.js');
 const jwt = config.get('jwt')
 const { verifyRecaptcha } = require('../libs/recaptcha.js')
-const moment = require('moment')
 const { DateTime } = require('luxon')
 
 const xPlatformValidate = () => async (ctx, next) => {

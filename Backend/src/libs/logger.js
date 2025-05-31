@@ -6,7 +6,7 @@ const Counter = require('passthrough-counter')
 const humanize = require('humanize-number')
 const bytes = require('bytes')
 const chalk = require('chalk')
-const moment = require('moment')
+const { DateTime } = require('luxon')
 
 const { addErrorApi } = require('./errorService')
 
@@ -32,7 +32,7 @@ const loggerRes = () => {
   return async function logger(ctx, next) {
     // request
     const start = Date.now()
-    console.log('  ' + chalk.gray('-->') + ' ' + chalk.bold('%s') + ' ' + chalk.gray('%s') + ' ' + chalk.cyan(moment.utc().utcOffset('UTC+07:00').format('YYYY-MM-DD HH:mm:ss')) + ' ' + chalk.gray('+7:00 TH'), ctx.method, ctx.originalUrl)
+    console.log('  ' + chalk.gray('-->') + ' ' + chalk.bold('%s') + ' ' + chalk.gray('%s') + ' ' + chalk.cyan(DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')) + ' ' + chalk.gray('+7:00 TH'), ctx.method, ctx.originalUrl)
 
     try {
       await next()

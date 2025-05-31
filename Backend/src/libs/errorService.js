@@ -1,12 +1,13 @@
 const winston = require('winston')
 const fs = require('fs')
 const otpGenerator = require('otp-generator')
-const moment = require('moment')
+const { DateTime } = require('luxon')
+
 // ================= LOG  ZONE ==================
 const dir = './logs/info'
-const logPath = `${dir}/${moment().utcOffset('+07:00').format('YYYY-MM-DD')}.log`
+const logPath = `${dir}/${DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')}.log`
 const throwDir = './logs/throw'
-const throwLogPath = `${throwDir}/${moment().utcOffset('+07:00').format('YYYY-MM-DD')}.log`
+const throwLogPath = `${throwDir}/${DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')}.log`
 const tsFormat = () => new Date().toLocaleTimeString()
 const mode = process.env.NODE_ENV === 'production'
 
@@ -78,7 +79,7 @@ const ErrorFormat = (error, res_id) => {
 
 const ErrorService = error => {
   const res_id = otpGenerator.generate(20)
-  const logDateTime = `${moment().utcOffset('+07:00').format('HH:mm:ss:SSS')} +07:00 GMT`
+  const logDateTime = `${DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')} +07:00 GMT`
   const { devError, prodError } = ErrorFormat(error, res_id)
   logger.log({
     time: logDateTime,
@@ -90,7 +91,8 @@ const ErrorService = error => {
 }
 
 const throwError = (error, key) => {
-  const logDateTime = `${moment().utcOffset('+07:00').format('HH:mm:ss:SSS')} +07:00 GMT`
+  const logDateTime = `${DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')} +07:00 GMT`
+
   const { message } = error || {}
   throwLogs.log({
     time: logDateTime,
@@ -110,7 +112,7 @@ const addErrorApi = result => {
 }
 
 const saveLogService = (logs, key) => {
-  const logDateTime = `${moment().utcOffset('+07:00').format('HH:mm:ss:SSS')} +07:00 GMT`
+  const logDateTime = `${DateTime.now().setZone('Asia/Bangkok').toFormat('yyyy-MM-dd')} +07:00 GMT`
   throwLogs.log({
     time: logDateTime,
     level: 'error',

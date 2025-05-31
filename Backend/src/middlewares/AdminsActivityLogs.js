@@ -1,5 +1,5 @@
 const { insertRecord } = require('../libs/mysql.js')
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const {
   // ADMIN_ACTIVITY_LOGS,
   AUTH_LOGIN_LOGS,
@@ -50,14 +50,14 @@ const authPreCheck = () => async (ctx, next) => {
 
 const authMonitorPermissionChange = () => async (ctx, next) => {
   try {
-    const currentTime = moment.utc();
 
+    const currentTime = DateTime.utc();
     const adminIdInAction = ctx.admin_id;
     const targetPermisssion = ctx.target_permission_id;
     const action = ctx.action_type;
-    const timestamp = currentTime.format('YYYY-MM-DD HH:mm:ss');
-    const createdat = currentTime.format('YYYY-MM-DD HH:mm:ss');
-    const updatedat = currentTime.format('YYYY-MM-DD HH:mm:ss');
+    const timestamp = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+    const createdat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+    const updatedat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
     const oldDataId = ctx.old_data_id || null;
     const newDataId = ctx.new_data_id || null;
     const connectionStatus = (ctx.connection_status === undefined || ctx.connection_status === null) ? 1 : ctx.connection_status;
@@ -90,23 +90,22 @@ const authMonitorPermissionChange = () => async (ctx, next) => {
 const authMonitorAdminMovement = () => async (ctx, next) => {
 
   try {
-    const currentTime = moment.utc();
-
+    const currentTime = DateTime.utc();
     const adminIdInAction = ctx.admin_id;
     const targetAdminId = ctx.target_admin_id || null;
     const action = ctx.action;
-    const timestamp = currentTime.format('YYYY-MM-DD HH:mm:ss');
-    const createdat = currentTime.format('YYYY-MM-DD HH:mm:ss');
-    const updatedat = currentTime.format('YYYY-MM-DD HH:mm:ss');
+    const timestamp = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+    const createdat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+    const updatedat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
     const oldDataId = ctx.old_data_id || null;
     const newDataId = ctx.new_data_id || null;
     const ActionRoleId = ctx.request.query.RoleModelId || 1;
     const ipAddress = getClientIp(ctx);
     const userAgent = getUserAgent(ctx);
     const status = 200;
-    
+
     console.log(`Admin ID in Action: ${adminIdInAction}, Target Admin ID: ${targetAdminId}, Action: ${action}, Timestamp: ${timestamp}, Old Data ID: ${oldDataId}, New Data ID: ${newDataId}, Action Role ID: ${ActionRoleId}, IP Address: ${ipAddress}, User Agent: ${userAgent}, Status: ${status}`);
-    
+
     await knex(AUTH_ADMIN_CHANGE_LOGS).insert({
 
       admin_id_in_action: adminIdInAction,
@@ -135,16 +134,17 @@ const authLoggerMiddleware = async (ctx, next) => {
     await next();
 
     if (includeRoutes.includes(ctx.path)) {
-      const currentTime = moment.utc();
+      const currentTime = DateTime.utc();
+
       const adminId = ctx.admin_id || null;
       const email = ctx.email || ctx.request.body?.Email || null;
       const ipAddress = getClientIp(ctx);
       const userAgent = getUserAgent(ctx);
       const reasonOfFialure = ctx.reason_of_failure || null;
       const failedAttemptCount = ctx.failed_attempt_count || 0;
-      const timestamp = currentTime.format('YYYY-MM-DD HH:mm:ss');
-      const createdat = currentTime.format('YYYY-MM-DD HH:mm:ss');
-      const updatedat = currentTime.format('YYYY-MM-DD HH:mm:ss');
+      const timestamp = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+      const createdat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
+      const updatedat = currentTime.toFormat('yyyy-MM-dd HH:mm:ss');
 
       if (ctx.check_pass === true) {
 
@@ -534,7 +534,7 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 
 //     const queryAbilitiesNew = queries.find((q) => q.NEWABILITIESNEW)?.NEWABILITIESNEW;
 //     const querySubAbilitiesNew = queries.find((q) => q.SUBABILITIESNEW)?.SUBABILITIESNEW;
-    
+
 //     const {
 //       SortColumn = 'TIMESTAMP',
 //       SortOrder = 'DESC',
@@ -553,7 +553,7 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 //     const searchFilter = SearchTerm?.trim() ? createPermissionSearchFilter(SearchTerm) : null;
 
 //     const TotalRecords = await fetchPermissionLogCount(searchFilter, StartDate, EndDate);   
-    
+
 //     const logData = await fetchPermissionLogData({
 //       sortBy,
 //       sortDirection,
@@ -570,8 +570,8 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 //         querySubAbilitiesNew
 //       }
 //     });
-    
-    
+
+
 //     if (!logData || logData.length === 0) {
 //       ctx.body = responseFormat({}, "GET_DATA_NOT_FOUND", ctx.language);
 //       return;
@@ -613,7 +613,7 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 //     SubAbility_new: l.readable_subability_new,
 //   }));
 // };
-    
+
 
 // const fetchPermissionLogData = async ({sortBy, sortDirection, offset, limit, searchFilter, StartDate, EndDate, dynamicQueries}) => {
 //   const query = knex(AUTH_PERMISSION_CHANGE_LOGS)
@@ -642,7 +642,7 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 //     knex.raw(`COALESCE((${dynamicQueries.queryTopicMethodOld}), 'UNKNOWN') as topic_of_ability_new`),
 //     knex.raw(`COALESCE((${dynamicQueries.queryAbilitiesNew}), 'UNKNOWN') as ability_readable_new`),
 //     knex.raw(`COALESCE((${dynamicQueries.querySubAbilitiesNew}), 'UNKNOWN') as readable_subability_new`),
-    
+
 //   )
 //   .leftJoin(`${PERMISSION_DETAIL_NEW}`, `${AUTH_PERMISSION_CHANGE_LOGS}.target_permission_id`, `${PERMISSION_DETAIL_NEW}.permission_detail_id`)
 //   .leftJoin(`${ROLE_MODEL}`, `${PERMISSION_DETAIL_NEW}.role_model_id`, `${ROLE_MODEL}.role_model_id`)
@@ -678,7 +678,7 @@ const createAdminLogSearchFilter = (SearchTerm) => {
 //   .limit(limit)
 //   .offset(offset);
 
-  
+
 //   if (searchFilter) query.modify(searchFilter);
 //   if (StartDate) query.where(`${AUTH_PERMISSION_CHANGE_LOGS}.timestamp`, '>=', getStartOfDay(StartDate));
 //   if (EndDate) query.where(`${AUTH_PERMISSION_CHANGE_LOGS}.timestamp`, '<=', getEndOfDay(EndDate));

@@ -1,6 +1,5 @@
 const fs = require('fs')
 const config = require('config')
-const moment = require('moment')
 // const otpGenerator = require('otp-generator')
 const { Storage } = require('@google-cloud/storage')
 const { throwError } = require('../libs/errorService.js')

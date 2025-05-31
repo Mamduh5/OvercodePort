@@ -53,8 +53,6 @@
     "koa-router": "^12.0.1",
     "koa-useragent": "^4.1.0",
     "luxon": "^3.5.0",
-    "moment": "^2.30.1",
-    "moment-timezone": "^0.5.47",
     "mysql2": "^3.12.0",
     "netmask": "^2.0.1",
     "node-cmd": "^5.0.0",
