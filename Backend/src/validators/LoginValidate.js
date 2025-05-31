@@ -11,6 +11,7 @@ const UserUpdateInfoSchema = require('./schemas/admins/UpdateUserInfoValidateSch
 const jwt = config.get('jwt')
 const { verifyRecaptcha } = require('../libs/recaptcha.js')
 const moment = require('moment')
+const { DateTime } = require('luxon')
 
 const xPlatformValidate = () => async (ctx, next) => {
   try {
@@ -83,7 +84,7 @@ const loginValidate = () => async (ctx, next) => {
 
     ctx.password_hash = findUser[0].password_hash
     ctx.refresh_token = findUser[0].refresh_token
-    
+
     const isYourAccountHaveBeenBlocked = await isBlocked(ctx, findUser[0].email);
 
     if (isYourAccountHaveBeenBlocked) {
@@ -97,7 +98,7 @@ const loginValidate = () => async (ctx, next) => {
     }
 
     const isPasswordValid = await Argon2verifyPassword(Password, ctx.password_hash);
-        
+
     if (!isPasswordValid) {
 
       ctx.status = 404;
@@ -158,7 +159,8 @@ const failedAttempCount = async (ctx, Email, ReasonOfFailure) => {
 
 const isBlocked = async (ctx, Email) => {
 
-  const currentTime = moment.utc();
+  const currentTime = DateTime.utc();
+
 
   const ReasonOfFailure = "Incorrect Password";
   const blockedEntry = await knex(AUTH_LOGIN_LOGS)
@@ -169,7 +171,8 @@ const isBlocked = async (ctx, Email) => {
 
   if (blockedEntry) {
 
-    const blockedTime = moment.utc(blockedEntry.timestamp)
+    const blockedTime = DateTime.fromJSDate(blockedEntry.timestamp).toUTC();
+
 
     if (currentTime.diff(blockedTime, 'minutes') < 30) {
       return true;
@@ -297,7 +300,7 @@ const validateOTP = async (ctx, AdminId, otp, RefCode) => {
         attempt_count: 1,
         status: 402,
         request_coming_from: 1,
-        created_at: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+        created_at: DateTime.utc().toFormat('yyyy-MM-dd HH:mm:ss'),
       });
     } else {
       const newFailedCount = failedCount.verify_otp_failed_attempt_count + 1;
@@ -334,10 +337,9 @@ const validateOTP = async (ctx, AdminId, otp, RefCode) => {
     ctx.body = responseFormat({}, 'OTP_EXPIRE', ctx.language);
     return;
   }
-  
-  const currentTime = moment.utc();
-  const otpExpiry = moment.utc(storedOTP.expired_at);
-  if (currentTime.isAfter(otpExpiry)) {
+  const currentTime = DateTime.utc();
+  const otpExpiry = DateTime.fromJSDate(storedOTP.expired_at).toUTC();
+  if (currentTime > otpExpiry) {
     await knex(ADMIN_2FA_REQUEST)
       .where({ admin_id: AdminId, topic_of_request: 1, request_coming_from: 1 })
       .update({ otp_code_status: 3 });

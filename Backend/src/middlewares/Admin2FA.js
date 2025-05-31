@@ -106,7 +106,7 @@ const confirmEnable2FA = () => async (ctx, next) => {
 
     const currentTime = DateTime.utc();
     const resetTokenExpiry = DateTime.fromJSDate(requestData.reset_token_expiry_at).toUTC();
-    if (currentTime.isAfter(resetTokenExpiry)) {
+    if (currentTime > resetTokenExpiry) {
       ctx.body = responseFormat({}, 'RESET_TOKEN_EXPIRE', ctx.language);
       return;
     }
@@ -366,7 +366,7 @@ const confirmOtpEmail2FA = () => async (ctx, next) => {
 
     const currentTime = DateTime.utc();
     const otpExpiry = DateTime.fromJSDate(otpData.expired_at).toUTC();
-    if (currentTime.isAfter(otpExpiry)) {
+    if (currentTime > otpExpiry) {
       await knex(ADMIN_2FA_REQUEST)
         .where({ admin_id: adminId, topic_of_request: 1, request_coming_from: 1 })
         .update({ otp_code_status: 3 });
