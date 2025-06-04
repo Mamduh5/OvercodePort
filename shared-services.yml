@@ -1,0 +1,27 @@
+# shared-services.yml
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine # '3-management-alpine' includes the management UI
+    container_name: shared_rabbitmq # Give it a unique global container name
+    hostname: rabbitmq # Important for RabbitMQ's internal naming
+    ports:
+      - "5672:5672"   # AMQP protocol port for applications to connect
+      - "15672:15672" # Management UI port (http://localhost:15672)
+    environment:
+      RABBITMQ_DEFAULT_USER: usermam # Change for production!
+      RABBITMQ_DEFAULT_PASS: mampassword # Change for production!
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Persist RabbitMQ data
+    networks:
+      - messaging_net # Define a dedicated network for messaging
+
+networks:
+  messaging_net:
+    # This network will be created when you run `docker-compose up -f shared-services.yml`
+    # It will then be accessible as an 'external' network by other docker-compose files
+    name: shared_messaging_network # Give the Docker network itself a unique name
+
+volumes:
+  rabbitmq_data:

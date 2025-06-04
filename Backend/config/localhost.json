@@ -118,5 +118,11 @@
     "VerifyURL": "https://www.google.com/recaptcha/api/siteverify",
     "SiteKey": "6Lcgb5oqAAAAABSTI3j3hV2rMUh9RpBw78GOYAB4",
     "PrivatKey": "6Lcgb5oqAAAAAAef7drPQUl4UBPM-GwTHZDIAmop"
+  },
+    "RabbitMQ":{
+    "host": "rabbitmq",
+    "port": 5672,
+    "username": "usermam",
+    "password": "mampassword"
   }
 }

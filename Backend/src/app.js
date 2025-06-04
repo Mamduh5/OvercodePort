@@ -19,11 +19,13 @@ const config = require('config')
 // Libs
 const { rateLimitFunction } = require('./libs/rateLimit')
 const { bodyParserFunction } = require('./libs/bodyParser')
-const { ErrorService } = require('./libs/errorService')
+const { ErrorService, throwError } = require('./libs/errorService')
 const { loggerRes } = require('./libs/logger')
-const { responseFormat } = require('./libs/formatResponse')
+const { responseFormat, } = require('./libs/formatResponse')
 const { MasterDataCreateKnexSql } = require('./libs/MasterDataCreateKnexSql.js')
 const { createEnvFile } = require('./libs/cENVdockerFile.js')
+const rabbitMQService = require('./services/rabbitmq');
+const { loadAndStartConsumers } = require('./services/consumers/consumerLoader.js');
 const cache = require('./libs/redis.js')
 // Routes
 const Token = require('./routes/Token.js')
@@ -81,6 +83,8 @@ app.use(koaValidator())
 app.use(loggerRes())
 app.use(error(ErrorService))
 app.use(rateLimitFunction())
+
+
 app.proxy = true
 // ---------------------------------------- set request header ----------------------------------------
 app.use(cors({
@@ -140,25 +144,34 @@ app.use(async ctx => {
 // ----------------------------------------server-listen-----------------------------------------------
 // start server
 
-console.log(
-  `===================================================
+async function startApplication() {
+    try {
+        // 1. Connect to RabbitMQ
+        await rabbitMQService.connectRabbitMQ(); // <--- Call connectRabbitMQ here!
+
+        // 2. Start any RabbitMQ consumers if this app needs to receive messages
+        // Start all your consumers dynamically
+        await loadAndStartConsumers(); // <--- Call the loader here
+
+        // 3. Start the HTTP server
+        if (process.env.NODE_ENV === 'test_localhostforuserswitchcase' || process.env.NODE_ENV === 'test_localhost') {
+            module.exports = app;
+        } else {
+            const server = app.listen(process.env.PORT || portUsed, () => {
+                console.log(
+                    `===================================================
 Start Server: ${chalk.cyan(serverEnv.host)}:${chalk.cyan(portUsed)}
 Deploy Mode: ${chalk.yellow(process.env.NODE_ENV)}
 PM2 instance: ${chalk.gray(process.env.NODE_APP_INSTANCE || 'master')}
 ===================================================`
-)
-
-console.log(`Max HTTP Header size is ${chalk.red(http.maxHeaderSize)}`)
-
-
-switch (process.env.NODE_ENV) {
-  case 'test_localhostforuserswitchcase':
-  case 'test_localhost':
-    module.exports = app
-    break;
-  default: {
-    const server = app.listen(process.env.PORT || portUsed)
-    module.exports = server
-    break;
-  }
+                );
+                console.log(`Max HTTP Header size is ${chalk.red(http.maxHeaderSize)}`);
+            });
+            module.exports = server;
+        }
+    } catch (error) {
+    throw throwError(error, 'startApplication');
+    }
 }
+
+startApplication();
