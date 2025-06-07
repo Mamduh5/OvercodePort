@@ -213,7 +213,7 @@ const requestOtpEmail2FA = () => async (ctx, next) => {
 
     if (latestOTP) {
       const requestTime = DateTime.fromJSDate(latestOTP.created_at).toUTC();
-      const timeDiff = currentTime.diff(requestTime, 'seconds');
+      const timeDiff = currentTime.diff(requestTime, 'seconds').seconds;
 
       const cooldownTimeOtp = 300;
       const remainingTimeOtp = Math.max(cooldownTimeOtp - timeDiff, 0);
