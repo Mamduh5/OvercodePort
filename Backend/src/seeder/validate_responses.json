@@ -477,6 +477,20 @@
         }
       ]
     },
+      {
+      "name": "MANY_OTP_REQUEST",
+      "code": "5115",
+      "description": [
+        {
+          "language": "TH",
+          "description": "ขอ otp มากเกินไป"
+        },
+        {
+          "language": "EN",
+          "description": "Too many otp request."
+        }
+      ]
+    },
     {
       "name": "MISSING_ADMIN_KEY_VALUES",
       "code": "4028",
